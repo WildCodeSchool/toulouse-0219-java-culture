@@ -1,0 +1,796 @@
+[
+  {
+    "datasetid": "musees",
+    "recordid": "c151f395923c1737532e4ea80e0ea15f327e7c09",
+    "fields": {
+      "id_secteur_postal": "31200",
+      "eq_telephone": "05 61 93 93 57",
+      "eq_horaires": "Ouvert le lundi et le mercredi de 14h \u00e0 17h et le mardi de 9h \u00e0 12h",
+      "eq_nom_equipement": "L'AEROTHEQUE",
+      "eq_site_web": "www.aerotheque.fr",
+      "geo_point_2d": [
+        43.61384695632489,
+        1.426872577646046
+      ],
+      "numero": "TOUT",
+      "lib_off": "RUE MONTMORENCY",
+      "eq_secteur": "3",
+      "eq_acces_bus": "15",
+      "eq_quartier": "3.1",
+      "geo_shape": {
+        "type": "Point",
+        "coordinates": [
+          1.426872577646046,
+          43.61384695632489
+        ]
+      },
+      "eq_ville": "TOULOUSE",
+      "eq_gestionnaire": "Structure commerciale"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1.426872577646046,
+        43.61384695632489
+      ]
+    },
+    "record_timestamp": "2017-12-31T14:18:21+01:00"
+  },
+  {
+    "datasetid": "musees",
+    "recordid": "a9816dc073acd405d53ff624338b29060345c405",
+    "fields": {
+      "id_secteur_postal": "31300",
+      "eq_telephone": "05 62 48 58 00",
+      "eq_horaires": "Mus\u00e9e ouvert du mercredi au vendredi de 10h \u00e0 18h et de 11h \u00e0 19h le samedi et dimanche. \r\nM\u00e9diath\u00e8que ouverte du mercredi au vendredi 13h-18h, samedi 11h-18h, sauf jours f\u00e9ri\u00e9s.",
+      "eq_nom_equipement": "LES ABATTOIRS - MUSEE D'ART MODERNE ET CONTEMPORAIN - FRAC MIDI-PYRENEES",
+      "eq_site_web": "www.lesabattoirs.org",
+      "geo_point_2d": [
+        43.60068735436719,
+        1.428995533183932
+      ],
+      "numero": "0076",
+      "lib_off": "ALL CHARLES DE FITTE",
+      "eq_secteur": "2",
+      "eq_acces_bus": "1, 45",
+      "eq_quartier": "2.1",
+      "geo_shape": {
+        "type": "Point",
+        "coordinates": [
+          1.428995533183932,
+          43.60068735436719
+        ]
+      },
+      "eq_ville": "TOULOUSE",
+      "eq_acces_metro": "Saint-Cyprien-R\u00e9publique (A)",
+      "eq_gestionnaire": "Structure mixte"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1.428995533183932,
+        43.60068735436719
+      ]
+    },
+    "record_timestamp": "2017-12-31T14:18:21+01:00"
+  },
+  {
+    "datasetid": "musees",
+    "recordid": "a54a1453b04ac87b9035b66f62bfe0f55e95b332",
+    "fields": {
+      "id_secteur_postal": "31400",
+      "eq_acces_bus": "2, 10, 78, 80",
+      "eq_horaires": "Ouvert tous les jours de 10 h \u00e0 12 h et de 14 h 15 \u00e0 17 h",
+      "eq_nom_equipement": "MONUMENT DE LA RESISTANCE",
+      "eq_site_web": "www.toulouse.fr",
+      "geo_point_2d": [
+        43.592777511978746,
+        1.453265097638348
+      ],
+      "numero": "TOUT",
+      "lib_off": "ALL FREDERIC MISTRAL",
+      "eq_secteur": "5",
+      "eq_quartier": "5.3",
+      "geo_shape": {
+        "type": "Point",
+        "coordinates": [
+          1.453265097638348,
+          43.592777511978746
+        ]
+      },
+      "eq_ville": "TOULOUSE",
+      "eq_acces_metro": "Fran\u00e7ois Verdier (B)",
+      "eq_gestionnaire": "Mairie de Toulouse - DGA Culture"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1.453265097638348,
+        43.592777511978746
+      ]
+    },
+    "record_timestamp": "2017-12-31T14:18:21+01:00"
+  },
+  {
+    "datasetid": "musees",
+    "recordid": "89775b4f44db102f73ca881277dc2104e02d2ac0",
+    "fields": {
+      "id_secteur_postal": "31400",
+      "eq_telephone": "06 82 79 68 30",
+      "eq_horaires": "Sur r\u00e9servation pour des groupes comprenant minimum 13 personnes maximum 25",
+      "eq_nom_equipement": "MUSEE DE L'ABEILLE",
+      "eq_site_web": "www.apiculture31.com",
+      "geo_point_2d": [
+        43.53354313124535,
+        1.458785831865071
+      ],
+      "numero": "0040",
+      "lib_off": "CHE DE PECHBUSQUE",
+      "eq_secteur": "5",
+      "eq_acces_bus": "54",
+      "eq_quartier": "5.2",
+      "geo_shape": {
+        "type": "Point",
+        "coordinates": [
+          1.458785831865071,
+          43.53354313124535
+        ]
+      },
+      "eq_ville": "TOULOUSE",
+      "eq_acces_metro": "Universit\u00e9 Paul Sabatier (B)",
+      "eq_gestionnaire": "Association"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1.458785831865071,
+        43.53354313124535
+      ]
+    },
+    "record_timestamp": "2017-12-31T14:18:21+01:00"
+  },
+  {
+    "datasetid": "musees",
+    "recordid": "20eeae03a6d244bf9fa85dbc53afe9854321053d",
+    "fields": {
+      "id_secteur_postal": "31300",
+      "eq_telephone": "05 81 91 79 17",
+      "eq_horaires": "Ouvert du lundi au vendredi de 9 h \u00e0 12 h et de 14 h \u00e0 18 h.",
+      "eq_nom_equipement": "MUSEE DE L'AFFICHE DE TOULOUSE - MATOU",
+      "eq_site_web": "www.centreaffiche.toulouse.fr",
+      "geo_point_2d": [
+        43.59855688685633,
+        1.430549211745709
+      ],
+      "numero": "0058",
+      "lib_off": "ALL CHARLES DE FITTE",
+      "eq_secteur": "2",
+      "eq_acces_bus": "1, 3, 14, 45, 66",
+      "eq_quartier": "2.1",
+      "geo_shape": {
+        "type": "Point",
+        "coordinates": [
+          1.430549211745709,
+          43.59855688685633
+        ]
+      },
+      "eq_ville": "TOULOUSE",
+      "eq_acces_metro": "Saint-Cyprien R\u00e9publique (A)",
+      "eq_gestionnaire": "Mairie de Toulouse - DGA Culture"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1.430549211745709,
+        43.59855688685633
+      ]
+    },
+    "record_timestamp": "2017-12-31T14:18:21+01:00"
+  },
+  {
+    "datasetid": "musees",
+    "recordid": "6f332200b9fb53c541514ecb673684b52057bcba",
+    "fields": {
+      "id_secteur_postal": "31000",
+      "eq_telephone": "05 62 47 41 77",
+      "eq_horaires": "Le Mercredi et le 1er dimanche de chaque mois de 14h \u00e0 17h",
+      "eq_nom_equipement": "MUSEE DES COMPAGNONS",
+      "eq_site_web": "www.compagnons.org",
+      "geo_point_2d": [
+        43.601588631325185,
+        1.442375951156149
+      ],
+      "numero": "0002",
+      "lib_off": "RUE TRIPIERE",
+      "eq_secteur": "1",
+      "eq_acces_bus": "2, 10, 12, 14, 38, 78, 80",
+      "eq_quartier": "1.1",
+      "geo_shape": {
+        "type": "Point",
+        "coordinates": [
+          1.442375951156149,
+          43.601588631325185
+        ]
+      },
+      "eq_ville": "TOULOUSE",
+      "eq_acces_metro": "Esquirol, Capitole (A)",
+      "eq_gestionnaire": "Association"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1.442375951156149,
+        43.601588631325185
+      ]
+    },
+    "record_timestamp": "2017-12-31T14:18:21+01:00"
+  },
+  {
+    "datasetid": "musees",
+    "recordid": "a8fa49a1b1918a5843a61475baf0822c31eb08bf",
+    "fields": {
+      "id_secteur_postal": "31300",
+      "eq_telephone": "05 61 77 82 72",
+      "eq_horaires": "Ouvert tous les jeudi et vendredi de 13h \u00e0 17h. Ouvert le premier dimanche du mois.\r\nVisites guid\u00e9es sur demande.",
+      "eq_nom_equipement": "MUSEE DES INSTRUMENTS DE MEDECINE DES HOPITAUX DE TOULOUSE",
+      "eq_site_web": "www.chu-toulouse.fr/le-musee-des-instruments-de",
+      "geo_point_2d": [
+        43.59911474305299,
+        1.436505562210062
+      ],
+      "numero": "0002",
+      "lib_off": "RUE VIGUERIE",
+      "eq_secteur": "2",
+      "eq_acces_bus": "2, 10, 12, 14, 78, 80",
+      "eq_quartier": "2.1",
+      "geo_shape": {
+        "type": "Point",
+        "coordinates": [
+          1.436505562210062,
+          43.59911474305299
+        ]
+      },
+      "eq_ville": "TOULOUSE",
+      "eq_acces_metro": "Saint-Cyprien-R\u00e9publique, Esquirol (A)",
+      "eq_gestionnaire": "Structure commerciale"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1.436505562210062,
+        43.59911474305299
+      ]
+    },
+    "record_timestamp": "2017-12-31T14:18:21+01:00"
+  },
+  {
+    "datasetid": "musees",
+    "recordid": "30c47dfc8f87b6d60be56c1c2fb35da07f81c373",
+    "fields": {
+      "id_secteur_postal": "31000",
+      "eq_telephone": "05 61 22 31 44",
+      "eq_horaires": "Ouvert tous les jours de 10h \u00e0 18h (jusqu\u2019\u00e0 19 h du 1er juin au 30 septembre).\r\nFermeture les 1er janvier, 1er mai et 25 d\u00e9cembre.",
+      "eq_nom_equipement": "MUSEE SAINT-RAYMOND - MUSEE DES ANTIQUES DE TOULOUSE",
+      "eq_site_web": "http://www.museesaintraymond.toulouse.fr",
+      "geo_point_2d": [
+        43.608234749691995,
+        1.442553241993765
+      ],
+      "numero": "TOUT",
+      "lib_off": "PL SAINT SERNIN",
+      "eq_secteur": "1",
+      "eq_acces_bus": "ncv, 15, 16, 23",
+      "eq_quartier": "1.1",
+      "geo_shape": {
+        "type": "Point",
+        "coordinates": [
+          1.442553241993765,
+          43.608234749691995
+        ]
+      },
+      "eq_ville": "TOULOUSE",
+      "eq_acces_metro": "Capitole (A), Jeanne d'Arc (B)",
+      "eq_gestionnaire": "Mairie de Toulouse - DGA Culture"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1.442553241993765,
+        43.608234749691995
+      ]
+    },
+    "record_timestamp": "2017-12-31T14:18:21+01:00"
+  },
+  {
+    "datasetid": "musees",
+    "recordid": "673c0b094ce9f682309f5790dfdf034c6a82f4f0",
+    "fields": {
+      "id_secteur_postal": "31000",
+      "eq_telephone": "05 67 73 84 84",
+      "eq_horaires": "Ouvert du mardi au dimanche de 10h \u00e0 18h.",
+      "eq_nom_equipement": "MUSEUM D'HISTOIRE NATURELLE",
+      "eq_site_web": "www.museum.toulouse.fr",
+      "geo_point_2d": [
+        43.594178146997955,
+        1.448956342173907
+      ],
+      "numero": "0035",
+      "lib_off": "ALL JULES GUESDE",
+      "eq_secteur": "5",
+      "eq_acces_bus": "1, 2, 10, 78, 80",
+      "eq_quartier": "5.3",
+      "geo_shape": {
+        "type": "Point",
+        "coordinates": [
+          1.448956342173907,
+          43.594178146997955
+        ]
+      },
+      "eq_ville": "TOULOUSE",
+      "eq_acces_metro": "Carmes, Palais de Justice (B)",
+      "eq_gestionnaire": "Mairie de Toulouse - DGA Culture"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1.448956342173907,
+        43.594178146997955
+      ]
+    },
+    "record_timestamp": "2017-12-31T14:18:21+01:00"
+  },
+  {
+    "datasetid": "musees",
+    "recordid": "bc521524860165171ebd0ed3afc055d1c48a1cfa",
+    "fields": {
+      "id_secteur_postal": "31000",
+      "eq_telephone": "05 61 36 81 12",
+      "eq_horaires": "Ouvert le premier vendredi de chaque mois de 18h \u00e0 20h.",
+      "eq_nom_equipement": "INSTITUT CATHOLIQUE DE TOULOUSE - ESPACE MUSEOGRAPHIQUE BACCRABERE - SALLE TOLOSA",
+      "eq_site_web": "www.ict-toulouse.fr",
+      "geo_point_2d": [
+        43.5953774709747,
+        1.443079429050769
+      ],
+      "numero": "0031",
+      "lib_off": "RUE DE LA FONDERIE",
+      "eq_secteur": "1",
+      "eq_acces_bus": "2, 38",
+      "eq_quartier": "1.1",
+      "geo_shape": {
+        "type": "Point",
+        "coordinates": [
+          1.443079429050769,
+          43.5953774709747
+        ]
+      },
+      "eq_ville": "TOULOUSE",
+      "eq_acces_metro": "Carmes (B)",
+      "eq_gestionnaire": "Autre institution publique"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1.443079429050769,
+        43.5953774709747
+      ]
+    },
+    "record_timestamp": "2017-12-31T14:18:21+01:00"
+  },
+  {
+    "datasetid": "musees",
+    "recordid": "16c32c763c9de39c22fd0b6aa707e665df3e2090",
+    "fields": {
+      "id_secteur_postal": "31200",
+      "eq_telephone": "05 67 73 84 84",
+      "eq_horaires": "Ouvert du 2 mai au 31 octobre du mardi au dimanche de 10h \u00e0 18h",
+      "eq_nom_equipement": "LES JARDINS DU MUSEUM - LA MAOURINE",
+      "eq_site_web": "www.museum.toulouse.fr",
+      "geo_point_2d": [
+        43.63273861855135,
+        1.450566434202066
+      ],
+      "numero": "0024",
+      "lib_off": "AV MAURICE BOURGES MAUNOURY",
+      "eq_secteur": "3",
+      "eq_acces_bus": "36",
+      "eq_quartier": "3.3",
+      "geo_shape": {
+        "type": "Point",
+        "coordinates": [
+          1.450566434202066,
+          43.63273861855135
+        ]
+      },
+      "eq_ville": "TOULOUSE",
+      "eq_acces_metro": "Borderouge (B)",
+      "eq_gestionnaire": "Mairie de Toulouse - DGA Culture"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1.450566434202066,
+        43.63273861855135
+      ]
+    },
+    "record_timestamp": "2017-12-31T14:18:21+01:00"
+  },
+  {
+    "datasetid": "musees",
+    "recordid": "821982a650981f9bd6044261ae9d814d5d59c30d",
+    "fields": {
+      "id_secteur_postal": "31300",
+      "eq_telephone": "05 61 77 84 25",
+      "eq_horaires": "Ouvert tous les jeudi et vendredi de 11h \u00e0 17h, et le dimande de 10h \u00e0 18h.\r\nVisites guid\u00e9es sur demande.",
+      "eq_nom_equipement": "MUSEE DE L'HISTOIRE DE LA MEDECINE DE TOULOUSE",
+      "eq_site_web": "www.museemedecine.free.fr",
+      "geo_point_2d": [
+        43.59911474305299,
+        1.436505562210062
+      ],
+      "numero": "0002",
+      "lib_off": "RUE VIGUERIE",
+      "eq_secteur": "2",
+      "eq_acces_bus": "2, 10, 12, 14, 78, 80",
+      "eq_quartier": "2.1",
+      "geo_shape": {
+        "type": "Point",
+        "coordinates": [
+          1.436505562210062,
+          43.59911474305299
+        ]
+      },
+      "eq_ville": "TOULOUSE",
+      "eq_acces_metro": "Saint-Cyprien-R\u00e9publique, Esquirol (A)",
+      "eq_gestionnaire": "Association"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1.436505562210062,
+        43.59911474305299
+      ]
+    },
+    "record_timestamp": "2017-12-31T14:18:21+01:00"
+  },
+  {
+    "datasetid": "musees",
+    "recordid": "f29bed25b7d0a1e16f235bd7d06cdd4e7064178e",
+    "fields": {
+      "id_secteur_postal": "31000",
+      "eq_telephone": "05 61 22 21 82",
+      "eq_horaires": "Tous les jours : 10h - 18h /  nocturne le mercredi jusqu'\u00e0 21h.",
+      "eq_nom_equipement": "MUSEE DES AUGUSTINS - MUSEE DES BEAUX ARTS DE TOULOUSE",
+      "eq_site_web": "www.augustins.org",
+      "geo_point_2d": [
+        43.6005647237877,
+        1.445895374779864
+      ],
+      "numero": "0021",
+      "lib_off": "RUE DE METZ",
+      "eq_secteur": "1",
+      "eq_acces_bus": "ncv, 2, 10, 14, 38, 78, 80",
+      "eq_quartier": "1.1",
+      "geo_shape": {
+        "type": "Point",
+        "coordinates": [
+          1.445895374779864,
+          43.6005647237877
+        ]
+      },
+      "eq_ville": "TOULOUSE",
+      "eq_acces_metro": "Esquirol (A) ou Carmes (B)",
+      "eq_gestionnaire": "Mairie de Toulouse - DGA Culture"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1.445895374779864,
+        43.6005647237877
+      ]
+    },
+    "record_timestamp": "2017-12-31T14:18:21+01:00"
+  },
+  {
+    "datasetid": "musees",
+    "recordid": "9401e7f76776e60c5c0ec21ac4573f5be025e209",
+    "fields": {
+      "id_secteur_postal": "31400",
+      "eq_telephone": "05 61 14 80 40",
+      "eq_horaires": "Ouvert du lundi au vendredi de 9h \u00e0 12h et de 13h30 \u00e0 17h30.\r\nOuvert le samedi de 14h \u00e0 17h.",
+      "eq_nom_equipement": "MUSEE DE LA RESISTANCE ET DE LA DEPORTATION",
+      "eq_site_web": "www.musee-resistance31.fr",
+      "geo_point_2d": [
+        43.589062138211716,
+        1.456827071965673
+      ],
+      "numero": "0052",
+      "lib_off": "ALL DES DEMOISELLES",
+      "eq_secteur": "5",
+      "eq_acces_bus": "2, 10, 78, 80",
+      "eq_quartier": "5.3",
+      "geo_shape": {
+        "type": "Point",
+        "coordinates": [
+          1.456827071965673,
+          43.589062138211716
+        ]
+      },
+      "eq_ville": "TOULOUSE",
+      "eq_acces_metro": "Esquirol ( A),  Fran\u00e7ois Verdier, Saint-Michel Marcel Langer (B)",
+      "eq_gestionnaire": "Autre institution publique"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1.456827071965673,
+        43.589062138211716
+      ]
+    },
+    "record_timestamp": "2017-12-31T14:18:21+01:00"
+  },
+  {
+    "datasetid": "musees",
+    "recordid": "816272ffad9f1c779076fa401816b2893dd5ac34",
+    "fields": {
+      "id_secteur_postal": "31000",
+      "eq_telephone": "05 61 14 65 50",
+      "eq_horaires": "Ouvert de 10h - 17h en hiver et de 10h \u00e0 18h en \u00e9t\u00e9 (du 1er juin au 30 septembre). Ferm\u00e9 le mardi et jours f\u00e9ri\u00e9s.",
+      "eq_nom_equipement": "MUSEE PAUL-DUPUY - ARTS GRAPHIQUES ET ARTS DECORATIFS",
+      "eq_site_web": "www.musees-midi-pyrenees.fr/musees/musee-paul-dupuy/",
+      "geo_point_2d": [
+        43.59689649840772,
+        1.44691777045932
+      ],
+      "numero": "0013",
+      "lib_off": "RUE DE LA PLEAU",
+      "eq_secteur": "1",
+      "eq_acces_bus": "ncv, 2, 12, 52",
+      "eq_quartier": "1.1",
+      "geo_shape": {
+        "type": "Point",
+        "coordinates": [
+          1.44691777045932,
+          43.59689649840772
+        ]
+      },
+      "eq_ville": "TOULOUSE",
+      "eq_acces_metro": "Esquirol (A) Carmes (B)",
+      "eq_gestionnaire": "Mairie de Toulouse - DGA Culture"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1.44691777045932,
+        43.59689649840772
+      ]
+    },
+    "record_timestamp": "2017-12-31T14:18:21+01:00"
+  },
+  {
+    "datasetid": "musees",
+    "recordid": "e0dc8e4b0fcb5235d395261279e7dd5eb940c631",
+    "fields": {
+      "id_secteur_postal": "31400",
+      "eq_telephone": "05 61 55 02 10",
+      "eq_horaires": "Ouvert tous les jeudis de 10h \u00e0 12h et de 14h \u00e0 16h et sur rendez-vous.",
+      "eq_nom_equipement": "MUSEE DES TRANSPORTS",
+      "eq_site_web": "www.musee-midi-pyrenees.fr",
+      "geo_point_2d": [
+        43.577023699418014,
+        1.450605552173446
+      ],
+      "numero": "0093",
+      "lib_off": "AV JULES JULIEN",
+      "eq_secteur": "5",
+      "eq_acces_bus": "2, 34",
+      "eq_quartier": "5.3",
+      "geo_shape": {
+        "type": "Point",
+        "coordinates": [
+          1.450605552173446,
+          43.577023699418014
+        ]
+      },
+      "eq_ville": "TOULOUSE",
+      "eq_acces_metro": "Saint-Agne SNCF (B)",
+      "eq_gestionnaire": "Association"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1.450605552173446,
+        43.577023699418014
+      ]
+    },
+    "record_timestamp": "2017-12-31T14:18:21+01:00"
+  },
+  {
+    "datasetid": "musees",
+    "recordid": "9eeee0f5c43667e244127839d5026fd446535f58",
+    "fields": {
+      "id_secteur_postal": "31400",
+      "eq_telephone": "05 61 14 65 50",
+      "eq_horaires": "Mus\u00e9e ouvert de 10h \u00e0 17h en hiver et de 10h \u00e0 18h en \u00e9t\u00e9 (du 1er juin au 30 septembre). Fermeture hebdomadaire le mardi.\r\nBiblioth\u00e8que ouverte le lundi de 14h \u00e0 17h, le mardi et le mercredi : 9h-12h et 14h-17h.",
+      "eq_nom_equipement": "MUSEE GEORGES-LABIT",
+      "eq_site_web": "www.musees-midi-pyrenees.fr/musees/musee-georges-labit/",
+      "geo_point_2d": [
+        43.59013439577329,
+        1.458249067381174
+      ],
+      "numero": "TOUT",
+      "lib_off": "RUE DU JAPON",
+      "eq_secteur": "5",
+      "eq_acces_bus": "10, 2, 27",
+      "eq_quartier": "5.3",
+      "geo_shape": {
+        "type": "Point",
+        "coordinates": [
+          1.458249067381174,
+          43.59013439577329
+        ]
+      },
+      "eq_ville": "TOULOUSE",
+      "eq_acces_metro": "Fran\u00e7ois Verdier (B)",
+      "eq_gestionnaire": "Mairie de Toulouse - DGA Culture"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1.458249067381174,
+        43.59013439577329
+      ]
+    },
+    "record_timestamp": "2017-12-31T14:18:21+01:00"
+  },
+  {
+    "datasetid": "musees",
+    "recordid": "135e48e53f3ebba4b854efdc159568aee1823049",
+    "fields": {
+      "id_secteur_postal": "31500",
+      "eq_telephone": "05 61 61 63 33",
+      "eq_horaires": "Ouvert du lundi au vendredi de 9h \u00e0 17h. Fermeture de 12h \u00e0 13h30 pendant toutes les vacances scolaires. Fermeture annuelle la derni\u00e8re quinzaine de juillet.",
+      "eq_nom_equipement": "ARCHIVES MUNICIPALES TOULOUSE",
+      "eq_site_web": "www.archives.toulouse.fr, www.urban-hist.toulouse.fr",
+      "geo_point_2d": [
+        43.6238450102716,
+        1.461400039078875
+      ],
+      "numero": "0002",
+      "lib_off": "RUE DES ARCHIVES",
+      "eq_secteur": "4",
+      "eq_acces_bus": "36, 38",
+      "eq_quartier": "4.1",
+      "geo_shape": {
+        "type": "Point",
+        "coordinates": [
+          1.461400039078875,
+          43.6238450102716
+        ]
+      },
+      "eq_ville": "TOULOUSE",
+      "eq_acces_metro": "Roseraie (A)",
+      "eq_gestionnaire": "Mairie de Toulouse - DGA Culture"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1.461400039078875,
+        43.6238450102716
+      ]
+    },
+    "record_timestamp": "2017-12-31T14:18:21+01:00"
+  },
+  {
+    "datasetid": "musees",
+    "recordid": "355820cd938fd2c93b47129ed8e05b0801448fdc",
+    "fields": {
+      "id_secteur_postal": "31500",
+      "eq_telephone": "0820.377.223 ( 0 ,12\u20ac ttc/min.)",
+      "eq_horaires": "Horaires variables selon les saisons. Ferm\u00e9 en janvier.",
+      "eq_nom_equipement": "CITE DE L'ESPACE",
+      "eq_site_web": "www.cite-espace.com",
+      "geo_point_2d": [
+        43.58745656952804,
+        1.491359445684072
+      ],
+      "numero": "TOUT",
+      "lib_off": "AV JEAN GONORD",
+      "eq_secteur": "4",
+      "eq_acces_bus": "37",
+      "eq_quartier": "4.3",
+      "geo_shape": {
+        "type": "Point",
+        "coordinates": [
+          1.491359445684072,
+          43.58745656952804
+        ]
+      },
+      "eq_ville": "TOULOUSE CEDEX 5",
+      "eq_gestionnaire": "Structure commerciale"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1.491359445684072,
+        43.58745656952804
+      ]
+    },
+    "record_timestamp": "2017-12-31T14:18:21+01:00"
+  },
+  {
+    "datasetid": "musees",
+    "recordid": "4d294a9714423e4a49be2a98cc33fe2884d730cd",
+    "fields": {
+      "id_secteur_postal": "31000",
+      "eq_telephone": "05 61 12 06 89",
+      "eq_horaires": "Ouverture du Mardi au Dimanche, de 10h \u00e0 12h30 et de 13h30 \u00e0 18 h.\r\nLe Jeudi de 10h \u00e0 12h30 et de 13h30 \u00e0 21h",
+      "eq_nom_equipement": "HOTEL D'ASSEZAT - FONDATION BEMBERG",
+      "eq_site_web": "www.fondation-bemberg.fr",
+      "geo_point_2d": [
+        43.600090412710955,
+        1.442092103650325
+      ],
+      "numero": "TOUT",
+      "lib_off": "PL D ASSEZAT",
+      "eq_secteur": "1",
+      "eq_acces_bus": "2, 10, 12, 14, 38, 78, 80",
+      "eq_quartier": "1.1",
+      "geo_shape": {
+        "type": "Point",
+        "coordinates": [
+          1.442092103650325,
+          43.600090412710955
+        ]
+      },
+      "eq_ville": "TOULOUSE",
+      "eq_acces_metro": "Esquirol (A)",
+      "eq_gestionnaire": "Association"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1.442092103650325,
+        43.600090412710955
+      ]
+    },
+    "record_timestamp": "2017-12-31T14:18:21+01:00"
+  },
+  {
+    "datasetid": "musees",
+    "recordid": "48bacbcbe6653571b1bb2007bdfa91842647fa33",
+    "fields": {
+      "id_secteur_postal": "31000",
+      "eq_telephone": "05 62 27 11 50",
+      "eq_horaires": "Ouvert tous les jours du 2 mai au 31 octobre de 14h00 \u00e0 18h00.\r\nFerm\u00e9 le dimanche et jours f\u00e9ri\u00e9s.",
+      "eq_nom_equipement": "MUSEE DU VIEUX TOULOUSE",
+      "geo_point_2d": [
+        43.602255917088165,
+        1.443126980747964
+      ],
+      "numero": "0007",
+      "lib_off": "RUE DU MAY",
+      "eq_secteur": "1",
+      "eq_acces_bus": "2, 10, 12, 14, 38, 78, 80",
+      "eq_quartier": "1.1",
+      "geo_shape": {
+        "type": "Point",
+        "coordinates": [
+          1.443126980747964,
+          43.602255917088165
+        ]
+      },
+      "eq_ville": "TOULOUSE",
+      "eq_acces_metro": "Esquirol, Capitole (A)",
+      "eq_gestionnaire": "Association"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        1.443126980747964,
+        43.602255917088165
+      ]
+    },
+    "record_timestamp": "2017-12-31T14:18:21+01:00"
+  }
+]
