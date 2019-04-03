@@ -2,6 +2,14 @@ package fr.wildcodeschool.culture;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -9,5 +17,30 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        String json = null;
+
+        try {
+            InputStream is = getAssets().open("Toulouse-musees.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        try {
+            JSONArray root = new JSONArray(json);
+            for (int i = 0; i < root.length(); i++) {
+                JSONObject rooter = (JSONObject) root.get(i);
+                String datasetid = (String) rooter.get("datasetid");
+                Toast.makeText(this, datasetid, Toast.LENGTH_LONG).show();
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
     }
 }
