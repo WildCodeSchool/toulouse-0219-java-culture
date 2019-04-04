@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fabSize="normal"
+        android:layout_gravity="bottom|right"
+        android:layout_marginRight="26dp"
+        android:layout_marginBottom="100dp"
+        android:clickable="true"
+        android:backgroundTint="@color/colorPrimary"
+        app:srcCompat="@drawable/ic_burger" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingFavorisBt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="normal"
+        android:visibility="gone"
+        android:backgroundTint="@color/colorPrimary"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="200dp"
+        android:layout_marginRight="26dp"
+        app:srcCompat="@android:drawable/btn_star_big_on" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingListPlaces"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="normal"
+        android:visibility="gone"
+        android:layout_gravity="bottom|right"
+        android:backgroundTint="@color/colorPrimary"
+        android:layout_marginBottom="300dp"
+        android:layout_marginRight="26dp"
+        app:srcCompat="@android:drawable/ic_dialog_map" />
+
+</android.support.design.widget.CoordinatorLayout>

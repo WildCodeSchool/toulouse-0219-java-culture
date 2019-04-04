@@ -1,19 +1,27 @@
 package fr.wildcodeschool.culture;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.transitionseverywhere.TransitionManager;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+
+    FloatingActionButton btFavoris, btBurger, btPlaces;
+    CoordinatorLayout transitionContainer;
 
     private GoogleMap mMap;
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1550;
@@ -27,6 +35,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
         checkLocationPermission();
+        menuBurger();
     }
 
     private void checkLocationPermission() {
@@ -82,5 +91,34 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         float zoomLevel = 16.0f; //This goes up to 21
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(toulouse, zoomLevel));
     }
-}
 
+    public void menuBurger(){
+
+        transitionContainer = (CoordinatorLayout) findViewById(R.id.menuLayout);
+        btBurger = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingActionButton);
+        btFavoris = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingFavorisBt);
+        btPlaces = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingListPlaces);
+
+        btBurger.setOnClickListener(new View.OnClickListener() {
+
+            int i = 0;
+            @SuppressLint("RestrictedApi")
+            @Override
+            public void onClick(View v) {
+                if (i == 0) {
+
+                    TransitionManager.beginDelayedTransition(transitionContainer);
+                    btFavoris.setVisibility(View.VISIBLE);
+                    btPlaces.setVisibility(View.VISIBLE);
+                    i++;
+                } else if (i == 1) {
+
+                    TransitionManager.beginDelayedTransition(transitionContainer);
+                    btFavoris.setVisibility(View.GONE);
+                    btPlaces.setVisibility(View.GONE);
+                    i = 0;
+                }
+            }
+        });
+    }
+}
