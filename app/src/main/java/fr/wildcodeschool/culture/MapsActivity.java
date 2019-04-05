@@ -2,6 +2,7 @@ package fr.wildcodeschool.culture;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -10,17 +11,26 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
+import android.widget.ListView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
 import com.transitionseverywhere.TransitionManager;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    FloatingActionButton btFavoris, btBurger, btPlaces;
+    FloatingActionButton btFavorit, btBurger, btPlaces;
     CoordinatorLayout transitionContainer;
 
     private GoogleMap mMap;
@@ -35,7 +45,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
         checkLocationPermission();
-        menuBurger();
+        FloatingMenu();
     }
 
     private void checkLocationPermission() {
@@ -65,17 +75,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
-
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
@@ -86,17 +85,49 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         else{
             mMap.setMyLocationEnabled(true);
         }
+        String json = null;
+
+        try {
+            InputStream is = getAssets().open("Toulouse-musees.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            JSONArray root = new JSONArray(json);
+            for (int i = 0; i < root.length(); i++) {
+                JSONObject rooter = (JSONObject) root.get(i);
+                JSONObject fields = rooter.getJSONObject("fields");
+                for (int b = 0; b < fields.length(); b++){
+                    JSONArray geolocalisation =(JSONArray) fields.get("geo_point_2d");
+                    String name = (String) fields.get("eq_nom_equipement");
+                    Double latitude = (Double) geolocalisation.get(0);
+                    Double longitude = (Double) geolocalisation.get(1);
+
+                    LatLng musée = new LatLng(latitude,longitude);
+
+                    mMap.addMarker(new MarkerOptions().position(musée).title(name));
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         LatLng toulouse = new LatLng(43.604, 1.443);
         float zoomLevel = 16.0f; //This goes up to 21
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(toulouse, zoomLevel));
     }
 
-    public void menuBurger(){
+    public void FloatingMenu() {
 
         transitionContainer = (CoordinatorLayout) findViewById(R.id.menuLayout);
         btBurger = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingActionButton);
-        btFavoris = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingFavorisBt);
+        btFavorit = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingFavoritBt);
         btPlaces = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingListPlaces);
 
         btBurger.setOnClickListener(new View.OnClickListener() {
@@ -108,17 +139,25 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 if (i == 0) {
 
                     TransitionManager.beginDelayedTransition(transitionContainer);
-                    btFavoris.setVisibility(View.VISIBLE);
+                    btFavorit.setVisibility(View.VISIBLE);
                     btPlaces.setVisibility(View.VISIBLE);
                     i++;
                 } else if (i == 1) {
 
                     TransitionManager.beginDelayedTransition(transitionContainer);
-                    btFavoris.setVisibility(View.GONE);
+                    btFavorit.setVisibility(View.GONE);
                     btPlaces.setVisibility(View.GONE);
                     i = 0;
                 }
             }
         });
+
+        /*btPlaces.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent gotoMain = new Intent(MapsActivity.this, MenuBurgerActivity.class);
+                startActivity(gotoMain);
+            }
+        });*/
     }
 }

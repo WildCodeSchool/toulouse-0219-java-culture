@@ -20,6 +20,8 @@
         <activity android:name=".MenuBurgerActivity">
 
         </activity>
+        <activity android:name=".ListViewElements"></activity>
+        <activity android:name=".ListMuseum" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -30,7 +32,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyC1MmxWogAt9KwRK4cJFQ4AUBKHP35Fq8c" />
+            android:value="@string/google_maps_key" />
 
         <activity
             android:name=".MapsActivity"
