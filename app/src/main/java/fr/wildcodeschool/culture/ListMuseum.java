@@ -43,9 +43,9 @@ public class ListMuseum extends AppCompatActivity {
                     String site = (String) fields.get("eq_site_web");
                     String metro =  (String) fields.get("eq_acces_metro");
 
-                    Museum musées = new Museum(name,numero,horaires,site,metro);
+                    Museum museum = new Museum(name,numero,horaires,site,metro);
 
-                    List<Museum> menu = Arrays.asList(musées);
+                    List<Museum> menu = Arrays.asList(museum);
 
                     ListView listMenu = findViewById(R.id.listView);
                     ListMuseumAdapter adapter = new ListMuseumAdapter(ListMuseum.this, menu);
