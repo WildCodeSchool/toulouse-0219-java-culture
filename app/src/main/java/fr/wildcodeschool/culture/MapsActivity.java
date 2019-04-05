@@ -98,9 +98,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     Double latitude = (Double) geolocalisation.get(0);
                     Double longitude = (Double) geolocalisation.get(1);
 
-                    LatLng musée = new LatLng(latitude,longitude);
+                    LatLng museum = new LatLng(latitude,longitude);
 
-                    mMap.addMarker(new MarkerOptions().position(musée).title(name));
+                    mMap.addMarker(new MarkerOptions().position(museum).title(name));
                 }
             }
         } catch (JSONException e) {
