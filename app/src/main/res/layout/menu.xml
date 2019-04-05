@@ -16,7 +16,7 @@
         app:srcCompat="@drawable/ic_burger" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingFavoritBt"
+        android:id="@+id/floatingFavoriteBt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"

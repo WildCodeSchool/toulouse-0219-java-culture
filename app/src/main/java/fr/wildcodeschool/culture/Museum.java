@@ -1,7 +1,6 @@
 package fr.wildcodeschool.culture;
 
 public class Museum {
-
     String name;
     String numero;
     String horaires;
@@ -55,8 +54,5 @@ public class Museum {
     public void setMetro(String metro) {
         this.metro = metro;
     }
-
-
-
 }
 

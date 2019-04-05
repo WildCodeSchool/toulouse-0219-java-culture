@@ -13,21 +13,21 @@ import android.widget.Toast;
 import com.transitionseverywhere.TransitionManager;
 
 public class MenuBurgerActivity extends AppCompatActivity {
-        FloatingActionButton btFavorit, btBurger, btPlaces;
+        FloatingActionButton btFavorite, btBurger, btPlaces;
         CoordinatorLayout transitionContainer;
         @Override
         protected void onCreate (Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_menu_burger);
-            FloatingMenu();
+            floatingMenu();
         }
 
     // Creation Menu
-    public void FloatingMenu() {
+    public void floatingMenu() {
 
         transitionContainer = (CoordinatorLayout) findViewById(R.id.menuLayout);
         btBurger = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingActionButton);
-        btFavorit = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingFavoritBt);
+        btFavorite = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingFavoriteBt);
         btPlaces = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingListPlaces);
 
         btBurger.setOnClickListener(new View.OnClickListener() {
@@ -39,13 +39,13 @@ public class MenuBurgerActivity extends AppCompatActivity {
                 if (i == 0) {
 
                     TransitionManager.beginDelayedTransition(transitionContainer);
-                    btFavorit.setVisibility(View.VISIBLE);
+                    btFavorite.setVisibility(View.VISIBLE);
                     btPlaces.setVisibility(View.VISIBLE);
                     i++;
                 } else if (i == 1) {
 
                     TransitionManager.beginDelayedTransition(transitionContainer);
-                    btFavorit.setVisibility(View.GONE);
+                    btFavorite.setVisibility(View.GONE);
                     btPlaces.setVisibility(View.GONE);
                     i = 0;
                 }

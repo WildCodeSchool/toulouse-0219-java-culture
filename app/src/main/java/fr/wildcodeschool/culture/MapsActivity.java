@@ -30,9 +30,8 @@ import com.transitionseverywhere.TransitionManager;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    FloatingActionButton btFavorit, btBurger, btPlaces;
+    FloatingActionButton btFavorite, btBurger, btPlaces;
     CoordinatorLayout transitionContainer;
-
     private GoogleMap mMap;
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1550;
 
@@ -45,7 +44,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
         checkLocationPermission();
-        FloatingMenu();
+        floatingMenu();
     }
 
     private void checkLocationPermission() {
@@ -123,11 +122,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(toulouse, zoomLevel));
     }
 
-    public void FloatingMenu() {
+    public void floatingMenu() {
 
         transitionContainer = (CoordinatorLayout) findViewById(R.id.menuLayout);
         btBurger = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingActionButton);
-        btFavorit = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingFavoritBt);
+        btFavorite = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingFavoriteBt);
         btPlaces = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingListPlaces);
 
         btBurger.setOnClickListener(new View.OnClickListener() {
@@ -139,25 +138,25 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 if (i == 0) {
 
                     TransitionManager.beginDelayedTransition(transitionContainer);
-                    btFavorit.setVisibility(View.VISIBLE);
+                    btFavorite.setVisibility(View.VISIBLE);
                     btPlaces.setVisibility(View.VISIBLE);
                     i++;
                 } else if (i == 1) {
 
                     TransitionManager.beginDelayedTransition(transitionContainer);
-                    btFavorit.setVisibility(View.GONE);
+                    btFavorite.setVisibility(View.GONE);
                     btPlaces.setVisibility(View.GONE);
                     i = 0;
                 }
             }
         });
 
-        /*btPlaces.setOnClickListener(new View.OnClickListener() {
+        btPlaces.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent gotoMain = new Intent(MapsActivity.this, MenuBurgerActivity.class);
+                Intent gotoMain = new Intent(MapsActivity.this, MainActivity.class);
                 startActivity(gotoMain);
             }
-        });*/
+        });
     }
 }
