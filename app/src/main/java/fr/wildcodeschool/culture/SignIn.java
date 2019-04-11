@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,10 +21,10 @@ public class SignIn extends AppCompatActivity {
     private EditText eTeMail;
     private EditText eTpassword;
     private Button bTsignIn;
-
+    private Button mBtAlreadyHaveAccount;
+    private ProgressBar mProgressBarSign;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +36,15 @@ public class SignIn extends AppCompatActivity {
         eTpassword = findViewById(R.id.etPasswordRegister);
 
         bTsignIn = findViewById(R.id.btSignIn);
+        mBtAlreadyHaveAccount = findViewById(R.id.btAlreadyhaveAccount);
+        mProgressBarSign = findViewById(R.id.progressBarSign);
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                mProgressBarSign.setVisibility(View.GONE);
                 if (firebaseAuth.getCurrentUser() != null) {
+
                     startActivity(new Intent(SignIn.this, MapsActivity.class));
                 }
             }
@@ -52,6 +57,13 @@ public class SignIn extends AppCompatActivity {
             }
         });
 
+        mBtAlreadyHaveAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToRegister = new Intent(SignIn.this, RegisterActivity.class);
+                startActivity(goToRegister);
+            }
+        });
     }
 
     @Override
@@ -63,6 +75,7 @@ public class SignIn extends AppCompatActivity {
     private void startSignIn() {
         String email = eTeMail.getText().toString();
         String password = eTpassword.getText().toString();
+        mProgressBarSign.setVisibility(View.VISIBLE);
 
         if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
 
