@@ -17,9 +17,9 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class SignIn extends AppCompatActivity {
 
-    private EditText eTeMail;
-    private EditText eTpassword;
-    private Button bTsignIn;
+    private EditText mEtEmail;
+    private EditText mEtPassword;
+    private Button mBtSignIn;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -31,10 +31,10 @@ public class SignIn extends AppCompatActivity {
         setContentView(R.layout.activity_sign_in);
         mAuth = FirebaseAuth.getInstance();
 
-        eTeMail = findViewById(R.id.etEmail);
-        eTpassword = findViewById(R.id.etPassword);
+        mEtEmail = findViewById(R.id.etEmail);
+        mEtPassword = findViewById(R.id.etPassword);
 
-        bTsignIn = findViewById(R.id.btSignIn);
+        mBtSignIn = findViewById(R.id.btSignIn);
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -45,7 +45,7 @@ public class SignIn extends AppCompatActivity {
             }
         };
 
-        bTsignIn.setOnClickListener(new View.OnClickListener() {
+        mBtSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startSignIn();
@@ -61,8 +61,8 @@ public class SignIn extends AppCompatActivity {
     }
 
     private void startSignIn() {
-        String email = eTeMail.getText().toString();
-        String password = eTpassword.getText().toString();
+        String email = mEtEmail.getText().toString();
+        String password = mEtPassword.getText().toString();
 
         if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
 
