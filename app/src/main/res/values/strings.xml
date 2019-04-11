@@ -5,4 +5,7 @@
     <string name="culture">Culture Toulouse</string>
     <string name="all_fields_are_required">All fields are required!</string>
     <string name="wrong_mail_or_password">Wrong E-mail or Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="your_e_mail">Your E-mail</string>
+    <string name="your_password">Your Password</string>
 </resources>

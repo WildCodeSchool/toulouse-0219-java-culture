@@ -32,7 +32,7 @@ public class SignIn extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         eTeMail = findViewById(R.id.etEmail);
-        eTpassword = findViewById(R.id.etPassword);
+        eTpassword = findViewById(R.id.etPasswordRegister);
 
         bTsignIn = findViewById(R.id.btSignIn);
 
