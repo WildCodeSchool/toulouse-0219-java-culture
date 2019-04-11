@@ -22,7 +22,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText mRegLastname, mRegFirstname, mRegEmail, mRegPassword, mRegConfirmPassword;
     private Button mRegBtRegister;
     private FirebaseAuth mAuth;
-    private ProgressBar mprogressBarReg;
+    private ProgressBar mProgressBarReg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
         mRegConfirmPassword = findViewById(R.id.etConfirmPassword);
         mRegBtRegister = findViewById(R.id.btRegister);
         mAuth = FirebaseAuth.getInstance();
-        mprogressBarReg = findViewById(R.id.progressBar);
+        mProgressBarReg = findViewById(R.id.progressBar);
         Button btAlreadyHaveAccount = findViewById(R.id.btHaveAccount);
 
         btAlreadyHaveAccount.setOnClickListener(new View.OnClickListener() {
@@ -60,11 +60,11 @@ public class RegisterActivity extends AppCompatActivity {
                 if (!TextUtils.isEmpty(lastName) && !TextUtils.isEmpty(firstName) && !TextUtils.isEmpty(emailReg) && !TextUtils.isEmpty(passwordReg) && !TextUtils.isEmpty(passwordConfirmReg)) {
                     if (passwordReg.equals(passwordConfirmReg)) {
 
-                        mprogressBarReg.setVisibility(View.VISIBLE);
+                        mProgressBarReg.setVisibility(View.VISIBLE);
                         mAuth.createUserWithEmailAndPassword(emailReg, passwordReg).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                mprogressBarReg.setVisibility(View.GONE);
+                                mProgressBarReg.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
                                     Toast.makeText(RegisterActivity.this, getString(R.string.welcome), Toast.LENGTH_LONG).show();
                                     goToMapsActivity();
