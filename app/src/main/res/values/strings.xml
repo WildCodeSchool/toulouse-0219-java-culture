@@ -3,4 +3,6 @@
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_maps2">Map</string>
     <string name="culture">Culture Toulouse</string>
+    <string name="all_fields_are_required">All fields are required!</string>
+    <string name="wrong_mail_or_password">Wrong E-mail or Password</string>
 </resources>
