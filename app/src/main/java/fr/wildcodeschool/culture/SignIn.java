@@ -18,9 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class SignIn extends AppCompatActivity {
 
-    private EditText eTeMail;
-    private EditText eTpassword;
-    private Button bTsignIn;
+
     private Button mBtAlreadyHaveAccount;
     private ProgressBar mProgressBarSign;
     private EditText mEtEmail;
@@ -29,6 +27,7 @@ public class SignIn extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +39,7 @@ public class SignIn extends AppCompatActivity {
         mEtEmail = findViewById(R.id.etEmail);
         mEtPassword = findViewById(R.id.etPassword);
 
-        bTsignIn = findViewById(R.id.btSignIn);
+
         mBtAlreadyHaveAccount = findViewById(R.id.btAlreadyhaveAccount);
         mProgressBarSign = findViewById(R.id.progressBarSign);
         mBtSignIn = findViewById(R.id.btSignIn);
