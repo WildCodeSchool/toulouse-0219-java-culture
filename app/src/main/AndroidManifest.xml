@@ -7,6 +7,7 @@
          location permissions for the 'MyLocation' functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <uses-feature android:name="android.hardware.location.gps" />
 
@@ -17,15 +18,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RegisterActivity"><intent-filter>
+        <activity
+            android:name=".RegisterActivity"
+            android:windowSoftInputMode="adjustPan"></activity>
+        <activity
+            android:name=".SignIn"
+            android:windowSoftInputMode="adjustPan"> <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter></activity>
-        <activity android:name=".SignIn"></activity>
         <activity android:name=".MenuBurgerActivity" />
+        <activity android:name=".Events">
+        </activity>
         <activity android:name=".ListViewElements" />
-        <activity android:name=".ListMuseum" />
+        <activity android:name=".ListMuseum">
+        </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -41,6 +49,7 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/culture"></activity>
+            android:label="@string/title_activity_maps2">
         <activity android:name=".MainActivity" />
     </application>
 
