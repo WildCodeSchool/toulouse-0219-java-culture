@@ -25,5 +25,4 @@ public class ListMuseum extends AppCompatActivity {
             }
         });
     }
-
 }
