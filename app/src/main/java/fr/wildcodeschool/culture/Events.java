@@ -29,7 +29,6 @@ public class Events extends AppCompatActivity {
 
                     @Override
                     public void onResponse(JSONObject response) {
-
                         try {
                             JSONArray records = response.getJSONArray("records");
                             for (int i = 0; i < records.length(); i++) {
@@ -44,8 +43,6 @@ public class Events extends AppCompatActivity {
                                     JSONArray geolocalisation =(JSONArray) fields.get("geo_point");
                                     Double latitude = (Double) geolocalisation.get(0);
                                     Double longitude = (Double) geolocalisation.get(1);
-
-
                                 }
                             }
                         } catch (JSONException e) {
@@ -54,16 +51,13 @@ public class Events extends AppCompatActivity {
                     }
                 },
                 new Response.ErrorListener() {
-
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         // Afficher l'erreur
                         Log.d("VOLLEY_ERROR", "onErrorResponse: " + error.getMessage());
                     }
                 }
-
         );
-
         // On ajoute la requête à la file d'attente
         requestQueue.add(jsonObjectRequest);
     }
