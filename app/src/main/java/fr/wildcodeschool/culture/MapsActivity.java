@@ -80,12 +80,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap = googleMap;
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-        } else {
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        }
+        else {
             mMap.setMyLocationEnabled(true);
         }
         String json = null;
-
         try {
             InputStream is = getAssets().open("Toulouse-musees.json");
             int size = is.available();
@@ -96,7 +96,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-
         try {
             JSONArray root = new JSONArray(json);
             for (int i = 0; i < root.length(); i++) {
@@ -108,16 +107,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     Double latitude = (Double) geolocalisation.get(0);
                     Double longitude = (Double) geolocalisation.get(1);
 
-                    LatLng museum = new LatLng(latitude, longitude);
-
-                    mMap.addMarker(new MarkerOptions().position(museum).title(name));
-
+                    LatLng musée = new LatLng(latitude,longitude);
+                    mMap.addMarker(new MarkerOptions().position(musée).title(name));
                 }
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
         LatLng toulouse = new LatLng(43.604, 1.443);
         float zoomLevel = 16.0f; //This goes up to 21
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(toulouse, zoomLevel));
@@ -159,7 +155,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         btPlaces.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent gotoMain = new Intent(MapsActivity.this, MainActivity.class);
+                Intent gotoMain = new Intent(MapsActivity.this, ListMuseum.class);
                 startActivity(gotoMain);
 
             }
