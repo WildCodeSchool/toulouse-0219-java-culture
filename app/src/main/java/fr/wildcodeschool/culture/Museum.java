@@ -1,5 +1,4 @@
 package fr.wildcodeschool.culture;
-
 import android.content.Context;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -7,7 +6,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-
 
 public class Museum {
 
@@ -17,8 +15,7 @@ public class Museum {
     String horaires;
     String site;
     String metro;
-
-
+    
     public Museum(String name, String numero, String horaires, String site, String metro) {
         this.name = name;
         this.numero = numero;
@@ -54,7 +51,6 @@ public class Museum {
                 String metro = "";
                 if(fields.has("eq_acces_metro")) {
                     metro = (String) fields.get("eq_acces_metro");
-
                 }
                 
                 String horaires ="";
@@ -66,7 +62,6 @@ public class Museum {
                 if(fields.has("eq_site_web")) {
                     site = (String) fields.get("eq_site_web");
                 }
-
                 Museum museum = new Museum(name,numero,horaires,site,metro);
                 museums.add(museum);
             }
@@ -120,6 +115,5 @@ public class Museum {
     public interface MuseumListener {
         void onResult(ArrayList<Museum> museums);
     }
-
 }
 
