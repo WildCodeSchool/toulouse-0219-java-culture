@@ -16,6 +16,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -23,6 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Button mRegBtRegister;
     private FirebaseAuth mAuth;
     private ProgressBar mProgressBarReg;
+    private FirebaseDatabase mDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +57,8 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String lastName = mRegLastname.getText().toString();
-                String firstName = mRegFirstname.getText().toString();
+                final String lastName = mRegLastname.getText().toString();
+                final String firstName = mRegFirstname.getText().toString();
                 String emailReg = mRegEmail.getText().toString();
                 String passwordReg = mRegPassword.getText().toString();
                 String passwordConfirmReg = mRegConfirmPassword.getText().toString();
@@ -66,7 +72,16 @@ public class RegisterActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 mProgressBarReg.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(RegisterActivity.this, getString(R.string.welcome), Toast.LENGTH_LONG).show();
+                                    String user_id = mAuth.getCurrentUser().getUid();
+                                    DatabaseReference nameUser = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
+                                    Map newPost = new HashMap();
+                                    newPost.put("lastname", lastName);
+                                    newPost.put("firstname", firstName);
+                                    nameUser.setValue(newPost);
+                                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                    String uid = user.getUid();
+
+                                    Toast.makeText(RegisterActivity.this, getString(R.string.welcome) + " "+ lastName + " " + firstName , Toast.LENGTH_LONG).show();
                                     goToMapsActivity();
 
                                 } else {

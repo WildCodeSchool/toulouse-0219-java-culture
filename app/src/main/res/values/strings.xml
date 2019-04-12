@@ -14,7 +14,7 @@
     <string name="lastname">Lastname</string>
     <string name="already_have_an_account">Already have an account ?</string>
     <string name="need_a_new_account">Need a new Account?</string>
-    <string name="welcome">Welcome !</string>
+    <string name="welcome">Welcome </string>
     <string name="error">Error :</string>
     <string name="your_e_mail">Your E-mail</string>
     <string name="your_password">Your Password</string>
