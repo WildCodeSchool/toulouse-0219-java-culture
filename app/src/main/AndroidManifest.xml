@@ -17,12 +17,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SignIn">  <intent-filter>
+        <activity android:name=".RegisterActivity"><intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
             <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter> </activity>
-        <activity android:name=".MenuBurgerActivity"></activity>
+        </intent-filter></activity>
+        <activity android:name=".SignIn"></activity>
+        <activity android:name=".MenuBurgerActivity" />
         <activity android:name=".ListViewElements" />
         <activity android:name=".ListMuseum" />
         <!--
@@ -39,9 +40,7 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/culture">
-
-        </activity>
+            android:label="@string/culture"></activity>
         <activity android:name=".MainActivity" />
     </application>
 
