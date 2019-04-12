@@ -15,7 +15,7 @@ public class Museum {
     String horaires;
     String site;
     String metro;
-    
+
     public Museum(String name, String numero, String horaires, String site, String metro) {
         this.name = name;
         this.numero = numero;
@@ -47,17 +47,17 @@ public class Museum {
                 if(fields.has("eq_telephone")) {
                     numero = (String) fields.get("eq_telephone");
                 }
-                
+
                 String metro = "";
                 if(fields.has("eq_acces_metro")) {
                     metro = (String) fields.get("eq_acces_metro");
                 }
-                
+
                 String horaires ="";
                 if(fields.has("eq_horaires")) {
                     horaires = (String) fields.get("eq_horaires");
                 }
-                
+
                 String site = "";
                 if(fields.has("eq_site_web")) {
                     site = (String) fields.get("eq_site_web");

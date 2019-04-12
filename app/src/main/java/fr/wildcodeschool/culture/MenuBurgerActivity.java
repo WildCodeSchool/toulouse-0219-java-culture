@@ -1,43 +1,29 @@
 package fr.wildcodeschool.culture;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.support.annotation.RestrictTo;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ListView;
+import android.widget.Toast;
 
 import com.transitionseverywhere.TransitionManager;
-import java.util.ArrayList;
 
-import static fr.wildcodeschool.culture.Museum.extractJson;
+public class MenuBurgerActivity extends AppCompatActivity {
+        FloatingActionButton btFavorite, btBurger, btPlaces;
+        CoordinatorLayout transitionContainer;
+        @Override
+        protected void onCreate (Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_menu_burger);
+            floatingMenu();
+        }
 
-public class ListMuseum extends AppCompatActivity {
-    FloatingActionButton btFavorite, btBurger, btPlaces;
-    CoordinatorLayout transitionContainer;
-    private static boolean dropOff = true;
-    private static int zoom = 15;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_museum);
-        floatingMenu();
-
-        extractJson(ListMuseum.this,dropOff,zoom, new Museum.MuseumListener() {
-            @Override
-            public void onResult(ArrayList<Museum> museums) {
-                ListView listMenu = findViewById(R.id.listView);
-                ListMuseumAdapter adapter = new ListMuseumAdapter(ListMuseum.this, museums);
-                listMenu.setAdapter(adapter);
-            }
-        });
-    }
-
-    // Creation Menu Flottant
-    public void floatingMenu(){
+    // Creation Menu
+    public void floatingMenu() {
 
         transitionContainer = (CoordinatorLayout) findViewById(R.id.menuLayout);
         btBurger = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingActionButton);
