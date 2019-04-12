@@ -69,7 +69,7 @@ public class Museum {
                     site = (String) fields.get("eq_site_web");
                 }
 
-                Museum museum = new Museum(name, numero, horaires, site, metro);
+                Museum museum = new Museum(name,numero,horaires,site,metro);
                 museums.add(museum);
             }
 
@@ -118,7 +118,6 @@ public class Museum {
     public void setMetro(String metro) {
         this.metro = metro;
     }
-
 
     public interface MuseumListener {
         void onResult(ArrayList<Museum> museums);
