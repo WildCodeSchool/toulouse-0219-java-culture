@@ -1,11 +1,13 @@
 package fr.wildcodeschool.culture;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
@@ -36,14 +38,14 @@ public class ListMuseum extends AppCompatActivity {
             for (int i = 0; i < root.length(); i++) {
                 JSONObject rooter = (JSONObject) root.get(i);
                 JSONObject fields = rooter.getJSONObject("fields");
-                for (int b = 0; b < fields.length(); b++){
+                for (int b = 0; b < fields.length(); b++) {
                     String name = (String) fields.get("eq_nom_equipement");
                     String numero = (String) fields.get("eq_telephone");
                     String horaires = (String) fields.get("eq_horaires");
                     String site = (String) fields.get("eq_site_web");
-                    String metro =  (String) fields.get("eq_acces_metro");
+                    String metro = (String) fields.get("eq_acces_metro");
 
-                    Museum museum = new Museum(name,numero,horaires,site,metro);
+                    Museum museum = new Museum(name, numero, horaires, site, metro);
 
                     List<Museum> menu = Arrays.asList(museum);
 
