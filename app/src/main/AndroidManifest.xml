@@ -18,6 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".FavoritesActivity"></activity>
         <activity android:name=".ScreenSplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,12 +31,11 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".SignIn"
-            android:windowSoftInputMode="adjustPan">
-        </activity>
+            android:windowSoftInputMode="adjustPan"></activity>
         <activity android:name=".MenuBurgerActivity" />
-        <activity android:name=".Events"></activity>
+        <activity android:name=".Events" />
         <activity android:name=".ListViewElements" />
-        <activity android:name=".ListMuseum"></activity>
+        <activity android:name=".ListMuseum" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
