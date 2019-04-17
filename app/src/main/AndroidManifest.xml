@@ -49,7 +49,7 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/culture"></activity>
-            android:label="@string/title_activity_maps2">
+
         <activity android:name=".MainActivity" />
     </application>
 
