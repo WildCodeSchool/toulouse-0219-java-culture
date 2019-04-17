@@ -24,6 +24,10 @@ public class Museum {
         this.metro = metro;
     }
 
+    public Museum() {
+
+    }
+
     public static void extractJson(Context context, Boolean dropoff, int zoom, final MuseumListener listener) {
         String json = null;
 
