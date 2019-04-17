@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "815219067847-ua36h5k53p9868j4q54n4ff1kjfiib70.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fr.wildcodeschool.culture",
+            "certificate_hash": "356f8c6220b5fd59e3da61bca7da854251704453"
+          }
+        },
+        {
           "client_id": "815219067847-brhlgvvt0ki4lln6fkrm9vmouml3jo32.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
