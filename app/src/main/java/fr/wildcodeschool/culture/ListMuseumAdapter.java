@@ -58,5 +58,4 @@ public class ListMuseumAdapter extends ArrayAdapter<Museum> {
 
         return convertView;
     }
-
 }
