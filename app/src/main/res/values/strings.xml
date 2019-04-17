@@ -19,4 +19,5 @@
     <string name="your_e_mail">Your E-mail</string>
     <string name="your_password">Your Password</string>
     <string name="sign_in">SIGN IN</string>
+    <string name="AddFavorites">Add to favorites with success !</string>
 </resources>
