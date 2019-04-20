@@ -35,8 +35,6 @@ public class FavoritesActivity extends AppCompatActivity {
                 for (DataSnapshot museumSnapshot : dataSnapshot.getChildren()) {
                     Museum favorites = museumSnapshot.getValue(Museum.class);
                     listFavorites.add(favorites);
-                    Toast.makeText(FavoritesActivity.this, favorites.getName(),
-                            Toast.LENGTH_LONG).show();
 
                     ListView listEgg = findViewById(R.id.favorites_listView);
                     listFavoritesAdapter adapter = new listFavoritesAdapter(FavoritesActivity.this, listFavorites);
