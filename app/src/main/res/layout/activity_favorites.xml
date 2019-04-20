@@ -6,12 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".FavoritesActivity">
 
-    <TextView
-        android:id="@+id/tvFavorites"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ListView
+        android:id="@+id/favorites_listView"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/activity_list_view_elements" />
 </android.support.constraint.ConstraintLayout>

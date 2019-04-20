@@ -31,12 +31,17 @@ public class FavoritesActivity extends AppCompatActivity {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                TextView fav = findViewById(R.id.tvFavorites);
+                List<Museum> listFavorites = new ArrayList<>();
                 for (DataSnapshot museumSnapshot : dataSnapshot.getChildren()) {
                     Museum favorites = museumSnapshot.getValue(Museum.class);
+                    listFavorites.add(favorites);
                     Toast.makeText(FavoritesActivity.this, favorites.getName(),
                             Toast.LENGTH_LONG).show();
-                    fav.append(favorites.getName());
+
+                    ListView listEgg = findViewById(R.id.favorites_listView);
+                    listFavoritesAdapter adapter = new listFavoritesAdapter(FavoritesActivity.this, listFavorites);
+                    listEgg.setAdapter(adapter);
+
                 }
             }
 

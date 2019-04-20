@@ -19,13 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ListEventsActivity"></activity>
-        <activity android:name=".FavoritesActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".FavoritesActivity"></activity>
         <activity android:name=".ScreenSplashActivity"></activity>
         <activity
             android:name=".RegisterActivity"
@@ -51,7 +45,13 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/culture" />
+            android:label="@string/culture">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".MainActivity" />
     </application>
 
