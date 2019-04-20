@@ -7,7 +7,7 @@
     tools:context=".FavoritesActivity">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tvFavorites"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

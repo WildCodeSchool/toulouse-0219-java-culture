@@ -18,6 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ListEventsActivity"></activity>
         <activity android:name=".FavoritesActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,15 +26,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ScreenSplashActivity">
-
-        </activity>
+        <activity android:name=".ScreenSplashActivity"></activity>
         <activity
             android:name=".RegisterActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".SignIn"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".MenuBurgerActivity" />
         <activity android:name=".Events" />
         <activity android:name=".ListViewElements" />

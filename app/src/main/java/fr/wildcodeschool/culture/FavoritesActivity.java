@@ -31,7 +31,7 @@ public class FavoritesActivity extends AppCompatActivity {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                TextView fav = findViewById(R.id.textView2);
+                TextView fav = findViewById(R.id.tvFavorites);
                 for (DataSnapshot museumSnapshot : dataSnapshot.getChildren()) {
                     Museum favorites = museumSnapshot.getValue(Museum.class);
                     Toast.makeText(FavoritesActivity.this, favorites.getName(),
