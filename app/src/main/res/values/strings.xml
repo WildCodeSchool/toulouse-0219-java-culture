@@ -2,4 +2,22 @@
     <string name="app_name">Culture</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_maps2">Map</string>
+    <string name="culture">Culture Toulouse</string>
+    <string name="all_fields_are_required">All fields are required!</string>
+    <string name="wrong_mail_or_password">Wrong E-mail or Password</string>
+    <string name="confirmation_password_does_not_match">Confirmation password does not match!</string>
+    <string name="e_mail">E-mail</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="firstname">FirstName</string>
+    <string name="create_new_account">Create new Account</string>
+    <string name="lastname">Lastname</string>
+    <string name="already_have_an_account">Already have an account ?</string>
+    <string name="need_a_new_account">Need a new Account?</string>
+    <string name="welcome">Welcome </string>
+    <string name="error">Error :</string>
+    <string name="your_e_mail">Your E-mail</string>
+    <string name="your_password">Your Password</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="AddFavorites">Add to favorites with success !</string>
 </resources>

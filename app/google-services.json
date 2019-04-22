@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "815219067847",
+    "firebase_url": "https://culture-projet.firebaseio.com",
+    "project_id": "culture-projet",
+    "storage_bucket": "culture-projet.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:815219067847:android:f986bb1cbf35a53f",
+        "android_client_info": {
+          "package_name": "fr.wildcodeschool.culture"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "815219067847-ua36h5k53p9868j4q54n4ff1kjfiib70.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fr.wildcodeschool.culture",
+            "certificate_hash": "356f8c6220b5fd59e3da61bca7da854251704453"
+          }
+        },
+        {
+          "client_id": "815219067847-brhlgvvt0ki4lln6fkrm9vmouml3jo32.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fr.wildcodeschool.culture",
+            "certificate_hash": "d30746c422be9fde912f1d263a72c099bb5c2e45"
+          }
+        },
+        {
+          "client_id": "815219067847-rsu96c10378p10knqoq9a18ode113esl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNLx16JHWoIKnCrdest3RoTk0_oytCogM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "815219067847-rsu96c10378p10knqoq9a18ode113esl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

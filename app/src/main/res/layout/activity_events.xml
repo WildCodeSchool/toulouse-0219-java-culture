@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ListMuseum">
+    tools:context=".Events">
 
     <ListView
-        android:id="@+id/listView"
+        android:id="@+id/lvEvents"
         android:layout_width="0dp"
         android:layout_height="706dp"
         android:layout_marginStart="8dp"
@@ -18,7 +18,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <include layout="@layout/menu"
-        android:id="@+id/menuLayout"/>
 </android.support.constraint.ConstraintLayout>

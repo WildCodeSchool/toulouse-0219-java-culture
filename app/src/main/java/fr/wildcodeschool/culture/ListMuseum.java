@@ -1,63 +1,85 @@
 package fr.wildcodeschool.culture;
 
-import android.os.Bundle;
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.google.firebase.auth.FirebaseAuth;
+import com.transitionseverywhere.TransitionManager;
+import java.util.ArrayList;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Arrays;
-import java.util.List;
+import static fr.wildcodeschool.culture.Museum.extractJson;
 
 public class ListMuseum extends AppCompatActivity {
+    private FirebaseAuth mAuth;
+    FloatingActionButton btFavorite, btBurger, btPlaces, btSignOut;
+    CoordinatorLayout transitionContainer;
+    private static boolean dropOff = true;
+    private static int zoom = 15;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_museum);
+        floatingMenu();
 
-        String json = null;
+        extractJson(ListMuseum.this,dropOff,zoom, new Museum.MuseumListener() {
+            @Override
+            public void onResult(ArrayList<Museum> museums) {
+                ListView listMenu = findViewById(R.id.listView);
+                ListMuseumAdapter adapter = new ListMuseumAdapter(ListMuseum.this, museums);
+                listMenu.setAdapter(adapter);
+            }
+        });
+    }
 
-        try {
-            InputStream is = getAssets().open("Toulouse-musees.json");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, "UTF-8");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+    // Creation Menu Flottant
+    public void floatingMenu() {
 
-        try {
-            JSONArray root = new JSONArray(json);
-            for (int i = 0; i < root.length(); i++) {
-                JSONObject rooter = (JSONObject) root.get(i);
-                JSONObject fields = rooter.getJSONObject("fields");
-                for (int b = 0; b < fields.length(); b++) {
-                    String name = (String) fields.get("eq_nom_equipement");
-                    String numero = (String) fields.get("eq_telephone");
-                    String horaires = (String) fields.get("eq_horaires");
-                    String site = (String) fields.get("eq_site_web");
-                    String metro = (String) fields.get("eq_acces_metro");
+        transitionContainer = (CoordinatorLayout) findViewById(R.id.menuLayout);
+        btBurger = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingActionButton);
+        btFavorite = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingFavoriteBt);
+        btPlaces = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingListPlaces);
+        btSignOut = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingSignOut);
 
-                    Museum museum = new Museum(name, numero, horaires, site, metro);
+        btBurger.setOnClickListener(new View.OnClickListener() {
 
-                    List<Museum> menu = Arrays.asList(museum);
+            int i = 0;
+            @SuppressLint("RestrictedApi")
+            @Override
+            public void onClick(View v) {
+                if (i == 0) {
 
-                    ListView listMenu = findViewById(R.id.listView);
-                    ListMuseumAdapter adapter = new ListMuseumAdapter(ListMuseum.this, menu);
-                    listMenu.setAdapter(adapter);
+                    TransitionManager.beginDelayedTransition(transitionContainer);
+                    btFavorite.setVisibility(View.VISIBLE);
+                    btPlaces.setVisibility(View.VISIBLE);
+                    btSignOut.setVisibility(View.VISIBLE);
+                    i++;
+                } else if (i == 1) {
 
+                    TransitionManager.beginDelayedTransition(transitionContainer);
+                    btFavorite.setVisibility(View.GONE);
+                    btPlaces.setVisibility(View.GONE);
+                    btSignOut.setVisibility(View.GONE);
+                    i = 0;
                 }
             }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
+        });
+        btSignOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                finish();
+                startActivity(new Intent(ListMuseum.this, SignIn.class));
+            }
+        });
     }
 }
