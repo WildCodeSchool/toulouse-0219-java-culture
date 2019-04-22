@@ -28,7 +28,7 @@
             android:name=".SignIn"
             android:windowSoftInputMode="adjustPan"></activity>
         <activity android:name=".MenuBurgerActivity" />
-        <activity android:name=".Events">
+        <activity android:name=".EventsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

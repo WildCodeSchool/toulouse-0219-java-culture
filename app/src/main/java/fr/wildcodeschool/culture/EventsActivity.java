@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import static fr.wildcodeschool.culture.Event.extractAPI;
 import static fr.wildcodeschool.culture.Museum.extractJson;
 
-public class Events extends AppCompatActivity {
+public class EventsActivity extends AppCompatActivity {
     private static boolean dropOff =true;
     private static int zoom = 15;
 
@@ -29,11 +29,11 @@ public class Events extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
 
-        extractAPI(Events.this,dropOff,zoom, new Event.EventListener() {
+        extractAPI(EventsActivity.this,dropOff,zoom, new Event.EventListener() {
             @Override
             public void onResult(ArrayList<Event> events) {
                 ListView listMenu = findViewById(R.id.lvEvents);
-                ListEventsAdapter adapter = new ListEventsAdapter(Events.this, events);
+                ListEventsAdapter adapter = new ListEventsAdapter(EventsActivity.this, events);
                 listMenu.setAdapter(adapter);
             }
         });
