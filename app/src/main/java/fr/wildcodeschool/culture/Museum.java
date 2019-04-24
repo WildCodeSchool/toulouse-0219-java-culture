@@ -25,7 +25,6 @@ public class Museum {
     }
 
     public Museum() {
-
     }
 
     public static void extractJson(Context context, Boolean dropoff, int zoom, final MuseumListener listener) {
