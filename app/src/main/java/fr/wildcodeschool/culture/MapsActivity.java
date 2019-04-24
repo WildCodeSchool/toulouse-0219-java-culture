@@ -106,6 +106,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     Double latitude = (Double) geolocalisation.get(0);
                     Double longitude = (Double) geolocalisation.get(1);
 
+                    Intent intent = new Intent(MapsActivity.this, ListMuseum.class);
+                    intent.putExtra("latitude", latitude);
+                    intent.putExtra("longitude", longitude);
+                    startActivity(intent);
+
                     LatLng museum = new LatLng(latitude, longitude);
                     mMap.addMarker(new MarkerOptions().position(museum).title(name));
                 }
