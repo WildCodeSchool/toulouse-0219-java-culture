@@ -151,6 +151,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
+        btFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToFavorites = new Intent(MapsActivity.this, FavoritesActivity.class);
+                startActivity(goToFavorites);
+            }
+        });
+
         btPlaces.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
