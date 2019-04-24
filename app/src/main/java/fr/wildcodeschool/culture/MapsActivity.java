@@ -10,14 +10,22 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.View;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.transitionseverywhere.TransitionManager;
@@ -28,6 +36,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -116,6 +125,67 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng toulouse = new LatLng(43.604, 1.443);
         float zoomLevel = 16.0f; //This goes up to 21
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(toulouse, zoomLevel));
+
+        RequestQueue requestQueue = Volley.newRequestQueue(MapsActivity.this);
+        String url = "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=agenda-des-manifestations-culturelles-so-toulouse&facet=type_de_manifestation&refine.type_de_manifestation=Culturelle";
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONArray records = response.getJSONArray("records");
+                            ArrayList<Event> events = new ArrayList<>();
+                            for (int i = 0; i < records.length(); i++) {
+                                JSONObject rec = (JSONObject) records.get(i);
+                                JSONObject fields = rec.getJSONObject("fields");
+                                String adresse ="";
+                                if (fields.has("lieu_adresse_2")){
+                                    adresse = (String) fields.get("lieu_adresse_2");
+                                }
+
+                                String descriptif = (String) fields.get("descriptif_court");
+                                String horaires = (String) fields.get("dates_affichage_horaires");
+                                String name = (String) fields.get("nom_de_la_manifestation");
+                                String tarif = "";
+                                if (fields.has("tarif normal")) {
+                                    tarif = (String) fields.get("tarif_normal");
+                                }
+                                JSONArray geolocalisation = (JSONArray) fields.get("geo_point");
+                                Double latitude = (Double) geolocalisation.get(0);
+                                Double longitude = (Double) geolocalisation.get(1);
+
+                                LatLng event = new LatLng(latitude, longitude);
+                                mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.icon)).position(event).title(name));
+
+                                mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+                                    @Override
+                                    public void onInfoWindowClick(Marker marker) {
+                                        if (marker.getTitle().equals("") ){
+                                        }
+                                        else {
+                                            Intent intent = new Intent(MapsActivity.this, EventsActivity.class);
+                                            startActivity(intent);
+                                        }
+                                    }
+                                });
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Afficher l'erreur
+                        Log.d("VOLLEY_ERROR", "onErrorResponse: " + error.getMessage());
+                    }
+                }
+        );
+        requestQueue.add(jsonObjectRequest);
     }
 
     public void floatingMenu() {
@@ -168,5 +238,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 startActivity(new Intent(MapsActivity.this, SignIn.class));
             }
         });
+
     }
+
 }

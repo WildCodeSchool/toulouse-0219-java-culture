@@ -29,11 +29,6 @@
             android:windowSoftInputMode="adjustPan"></activity>
         <activity android:name=".MenuBurgerActivity" />
         <activity android:name=".EventsActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ListViewElements" />
         <activity android:name=".ListMuseum" />
@@ -51,7 +46,13 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/culture" />
+            android:label="@string/culture">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".MainActivity" />
     </application>
 
