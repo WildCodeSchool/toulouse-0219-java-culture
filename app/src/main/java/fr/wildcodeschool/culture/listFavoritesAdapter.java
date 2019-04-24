@@ -8,14 +8,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
-
 import java.util.List;
 
 public class listFavoritesAdapter extends ArrayAdapter<Museum> {
 
     public listFavoritesAdapter(Context context, List<Museum> museum) {
         super(context, 0, museum);
-
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -41,7 +39,6 @@ public class listFavoritesAdapter extends ArrayAdapter<Museum> {
 
         return convertView;
     }
-
 }
 
 
