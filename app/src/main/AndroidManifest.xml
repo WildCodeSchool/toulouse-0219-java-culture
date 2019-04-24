@@ -23,11 +23,7 @@
             android:windowSoftInputMode="adjustPan"></activity>
         <activity
             android:name=".SignIn"
-            android:windowSoftInputMode="adjustPan"> <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
+            android:windowSoftInputMode="adjustPan"> </activity>
         <activity android:name=".MenuBurgerActivity" />
         <activity android:name=".Events">
         </activity>
@@ -48,8 +44,11 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/culture"></activity>
-            android:label="@string/title_activity_maps2">
+            android:label="@string/culture"><intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
         <activity android:name=".MainActivity" />
     </application>
 
