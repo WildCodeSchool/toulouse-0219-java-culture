@@ -2,27 +2,28 @@ package fr.wildcodeschool.culture;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.location.Location;
+import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.auth.FirebaseAuth;
 import com.transitionseverywhere.TransitionManager;
+
 import java.util.ArrayList;
 
 import static fr.wildcodeschool.culture.Museum.extractJson;
 
 public class ListMuseum extends AppCompatActivity {
-    private FirebaseAuth mAuth;
-    FloatingActionButton btFavorite, btBurger, btPlaces, btSignOut;
-    CoordinatorLayout transitionContainer;
     private static boolean dropOff = true;
     private static int zoom = 15;
+    FloatingActionButton btFavorite, btBurger, btPlaces, btSignOut;
+    CoordinatorLayout transitionContainer;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,16 @@ public class ListMuseum extends AppCompatActivity {
         setContentView(R.layout.activity_list_museum);
         floatingMenu();
 
-        extractJson(ListMuseum.this,dropOff,zoom, new Museum.MuseumListener() {
+        Intent intent = getIntent();
+        double longitude = intent.getDoubleExtra("longitude", 0);
+        double latitude = intent.getDoubleExtra("longitude", 0);
+
+        Location locationUser = new Location("");
+        locationUser.setLatitude(latitude);
+        locationUser.setLongitude(longitude);
+
+
+        extractJson(ListMuseum.this, locationUser, dropOff, zoom, new Museum.MuseumListener() {
             @Override
             public void onResult(ArrayList<Museum> museums) {
                 ListView listMenu = findViewById(R.id.listView);
@@ -53,6 +63,7 @@ public class ListMuseum extends AppCompatActivity {
         btBurger.setOnClickListener(new View.OnClickListener() {
 
             int i = 0;
+
             @SuppressLint("RestrictedApi")
             @Override
             public void onClick(View v) {
