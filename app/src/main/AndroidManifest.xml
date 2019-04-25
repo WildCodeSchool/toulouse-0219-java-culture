@@ -18,20 +18,15 @@
         android:roundIcon="@mipmap/museum_in_my_city_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ListEventsActivity"></activity>
         <activity android:name=".FavoritesActivity"></activity>
-        <activity android:name=".ScreenSplashActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".ScreenSplashActivity"></activity>
         <activity
             android:name=".RegisterActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".SignIn"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".MenuBurgerActivity" />
         <activity android:name=".EventsActivity">
         </activity>

@@ -28,12 +28,19 @@ public class FavoritesActivity extends AppCompatActivity {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("favorites");
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String favorite = (String) dataSnapshot.getValue();
-                Toast.makeText(FavoritesActivity.this, favorite,
-                        Toast.LENGTH_LONG).show();
+                List<Museum> listFavorites = new ArrayList<>();
+                for (DataSnapshot museumSnapshot : dataSnapshot.getChildren()) {
+                    Museum favorites = museumSnapshot.getValue(Museum.class);
+                    listFavorites.add(favorites);
+
+                    ListView listEgg = findViewById(R.id.favorites_listView);
+                    listFavoritesAdapter adapter = new listFavoritesAdapter(FavoritesActivity.this, listFavorites);
+                    listEgg.setAdapter(adapter);
+
+                }
             }
 
             @Override
