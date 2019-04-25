@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
 
-import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.auth.FirebaseAuth;
 import com.transitionseverywhere.TransitionManager;
 
@@ -32,16 +31,10 @@ public class ListMuseum extends AppCompatActivity {
         setContentView(R.layout.activity_list_museum);
         floatingMenu();
 
-        Intent intent = getIntent();
-        double longitude = intent.getDoubleExtra("longitude", 0);
-        double latitude = intent.getDoubleExtra("longitude", 0);
+        Singleton singleton = Singleton.getInstance();
+        Location coord = singleton.getLocationUser();
 
-        Location locationUser = new Location("");
-        locationUser.setLatitude(latitude);
-        locationUser.setLongitude(longitude);
-
-
-        extractJson(ListMuseum.this, locationUser, dropOff, zoom, new Museum.MuseumListener() {
+        extractJson(ListMuseum.this, coord, dropOff, zoom, new Museum.MuseumListener() {
             @Override
             public void onResult(ArrayList<Museum> museums) {
                 ListView listMenu = findViewById(R.id.listView);

@@ -16,12 +16,15 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.transitionseverywhere.TransitionManager;
 
@@ -34,13 +37,15 @@ import java.io.InputStream;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1550;
-    private static final int REQUEST_LOCATION = 1000;
+    //private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1550;
+    private static final int REQUEST_LOCATION = 4322;
     FloatingActionButton btFavorite, btBurger, btPlaces, btSignOut;
     CoordinatorLayout transitionContainer;
     private GoogleMap mMap;
     private LocationManager mLocationManager = null;
     private Location mLocationUser = null;
+    //FusedLocationProviderClient fusedLocationClient;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,10 +100,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 mLocationUser = new Location("");
                 mLocationUser.setLatitude(lat);
                 mLocationUser.setLongitude(lng);
+
+                Singleton singleton = Singleton.getInstance();
+                singleton.setLocationUser(mLocationUser);
+
+                //Toast.makeText(MapsActivity.this, coordinate.toString(), Toast.LENGTH_SHORT).show();
+
+                /*Intent intent = new Intent(MapsActivity.this, ListMuseum.class);
+                intent.putExtra ("mLocationUser", coord);
+                startActivity(intent);*/
+
+                //Singleton singleton = new Singleton()
+
                 float zoomLevel = 16.0f;
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coordinate, zoomLevel));
                 mMap.setMyLocationEnabled(true);
             }
+
 
             @Override
             public void onStatusChanged(String provider, int status, Bundle extras) {
@@ -112,7 +130,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onProviderDisabled(String provider) {
             }
         };
+        mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
         mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 2, locationListener);
+
+        FusedLocationProviderClient fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        fusedLocationClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+                // Got last known location. In some rare situations this can be null.
+                if (location != null) {
+                    // Logic to handle location object
+
+                    /*Intent intent = new Intent(MapsActivity.this, ListMuseum.class);
+                    intent.putExtra ("mLocationUser", coord);
+                    startActivity(intent);*/
+                }
+            }
+        });
     }
 
     @Override
@@ -145,7 +179,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     String name = (String) fields.get("eq_nom_equipement");
                     Double latitude = (Double) geolocalisation.get(0);
                     Double longitude = (Double) geolocalisation.get(1);
-
                     LatLng museum = new LatLng(latitude, longitude);
                     mMap.addMarker(new MarkerOptions().position(museum).title(name));
                 }
@@ -199,8 +232,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         btPlaces.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent gotoMain = new Intent(MapsActivity.this, ListMuseum.class);
-                startActivity(gotoMain);
+                Intent gotoListMuseum = new Intent(MapsActivity.this, ListMuseum.class);
+                startActivity(gotoListMuseum);
 
             }
         });
