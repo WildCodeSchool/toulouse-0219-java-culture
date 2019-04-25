@@ -34,11 +34,12 @@
 
     <TextView
         android:id="@+id/tvHoraires"
-        android:layout_width="315dp"
+        android:layout_width="0dp"
         android:layout_height="35dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvNumero" />
 
@@ -66,23 +67,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSite" />
 
-    <Button
+    <ToggleButton
         android:id="@+id/button"
-        android:layout_width="61dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_width="33dp"
+        android:layout_height="34dp"
         android:layout_marginTop="3dp"
         android:layout_marginEnd="3dp"
         android:layout_marginRight="3dp"
         android:layout_marginBottom="3dp"
-        android:background="@drawable/yellow_star"
+        android:background="@drawable/ic_favorite_button"
         app:layout_constraintBottom_toTopOf="@+id/tvSite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/tvHoraires"
         app:layout_constraintTop_toBottomOf="@+id/tvNumero"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.65"
+        android:textOff=""
+        android:textOn=""
+        android:focusable="false"
+        android:focusableInTouchMode="false"/>
 
 
 </android.support.constraint.ConstraintLayout>
