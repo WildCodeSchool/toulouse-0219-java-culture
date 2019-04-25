@@ -16,6 +16,10 @@ public class Museum {
     String site;
     String metro;
 
+    public  Museum(){
+
+    }
+
     public Museum(String name, String numero, String horaires, String site, String metro) {
         this.name = name;
         this.numero = numero;

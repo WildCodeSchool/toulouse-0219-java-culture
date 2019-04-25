@@ -28,7 +28,8 @@
             android:name=".SignIn"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".MenuBurgerActivity" />
-        <activity android:name=".Events" />
+        <activity android:name=".EventsActivity">
+        </activity>
         <activity android:name=".ListViewElements" />
         <activity android:name=".ListMuseum" />
         <!--

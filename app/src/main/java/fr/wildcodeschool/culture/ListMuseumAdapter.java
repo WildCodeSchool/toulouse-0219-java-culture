@@ -1,16 +1,12 @@
 package fr.wildcodeschool.culture;
 
 import android.content.Context;
-import android.support.v7.view.menu.ListMenuItemView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -33,10 +29,10 @@ public class ListMuseumAdapter extends ArrayAdapter<Museum> {
                     .inflate(R.layout.activity_list_view_elements, parent, false);
         }
 
-        TextView name = convertView.findViewById(R.id.tvName);
-        TextView numero = convertView.findViewById(R.id.tvNumero);
+        TextView name = convertView.findViewById(R.id.tvAdresse);
+        TextView numero = convertView.findViewById(R.id.tvDescriptif);
         TextView horaires = convertView.findViewById(R.id.tvHoraires);
-        TextView site = convertView.findViewById(R.id.tvSite);
+        TextView site = convertView.findViewById(R.id.tvName);
         TextView metro = convertView.findViewById(R.id.tvMetro);
         Button favorite = convertView.findViewById(R.id.button);
 

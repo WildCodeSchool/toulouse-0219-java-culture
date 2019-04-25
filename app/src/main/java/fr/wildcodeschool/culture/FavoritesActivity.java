@@ -47,7 +47,6 @@ public class FavoritesActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {}
         });
 
-
     }
 
 }

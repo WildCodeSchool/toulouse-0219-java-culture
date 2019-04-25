@@ -7,7 +7,7 @@
     tools:context=".ListViewElements">
 
     <TextView
-        android:id="@+id/tvName"
+        android:id="@+id/tvAdresse"
         android:layout_width="0dp"
         android:layout_height="35dp"
         android:layout_marginStart="8dp"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvNumero"
+        android:id="@+id/tvDescriptif"
         android:layout_width="0dp"
         android:layout_height="35dp"
         android:layout_marginStart="8dp"
@@ -30,7 +30,7 @@
         android:layout_marginRight="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvName" />
+        app:layout_constraintTop_toBottomOf="@+id/tvAdresse" />
 
     <TextView
         android:id="@+id/tvHoraires"
@@ -41,10 +41,10 @@
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toStartOf="@+id/button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNumero" />
+        app:layout_constraintTop_toBottomOf="@+id/tvDescriptif" />
 
     <TextView
-        android:id="@+id/tvSite"
+        android:id="@+id/tvName"
         android:layout_width="0dp"
         android:layout_height="35dp"
         android:layout_marginStart="8dp"
@@ -65,7 +65,7 @@
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSite" />
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
     <ToggleButton
         android:id="@+id/button"
@@ -86,6 +86,7 @@
         android:textOn=""
         android:focusable="false"
         android:focusableInTouchMode="false"/>
+
 
 
 </android.support.constraint.ConstraintLayout>
