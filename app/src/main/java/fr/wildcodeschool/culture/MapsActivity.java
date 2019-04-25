@@ -44,6 +44,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     FloatingActionButton btFavorite, btBurger, btPlaces, btSignOut;
     CoordinatorLayout transitionContainer;
     private GoogleMap mMap;
+    private  GoogleMap eMap;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,6 +89,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
 
         mMap = googleMap;
+        eMap = googleMap;
 
         if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
         } else {
@@ -123,7 +125,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             e.printStackTrace();
         }
         LatLng toulouse = new LatLng(43.604, 1.443);
-        float zoomLevel = 16.0f; //This goes up to 21
+        float zoomLevel = 14.0f; //This goes up to 21
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(toulouse, zoomLevel));
 
         RequestQueue requestQueue = Volley.newRequestQueue(MapsActivity.this);
@@ -141,34 +143,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             for (int i = 0; i < records.length(); i++) {
                                 JSONObject rec = (JSONObject) records.get(i);
                                 JSONObject fields = rec.getJSONObject("fields");
-                                String adresse ="";
-                                if (fields.has("lieu_adresse_2")){
-                                    adresse = (String) fields.get("lieu_adresse_2");
-                                }
-
-                                String descriptif = (String) fields.get("descriptif_court");
-                                String horaires = (String) fields.get("dates_affichage_horaires");
                                 String name = (String) fields.get("nom_de_la_manifestation");
-                                String tarif = "";
-                                if (fields.has("tarif normal")) {
-                                    tarif = (String) fields.get("tarif_normal");
-                                }
                                 JSONArray geolocalisation = (JSONArray) fields.get("geo_point");
                                 Double latitude = (Double) geolocalisation.get(0);
                                 Double longitude = (Double) geolocalisation.get(1);
 
-                                LatLng event = new LatLng(latitude, longitude);
-                                mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.icon)).position(event).title(name));
+                                final LatLng event = new LatLng(latitude, longitude);
+                                eMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.icon)).position(event).title(name));
 
-                                mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+                                eMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
                                     @Override
                                     public void onInfoWindowClick(Marker marker) {
-                                        if (marker.getTitle().equals("") ){
-                                        }
-                                        else {
-                                            Intent intent = new Intent(MapsActivity.this, EventsActivity.class);
-                                            startActivity(intent);
-                                        }
+                                        Intent intent = new Intent(MapsActivity.this,EventsActivity.class);
+                                        startActivity(intent);
                                     }
                                 });
                             }

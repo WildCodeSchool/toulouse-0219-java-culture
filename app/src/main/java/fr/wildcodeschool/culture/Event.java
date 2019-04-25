@@ -32,7 +32,6 @@ public class Event {
         this.tarif = tarif;
     }
 
-
     public static void extractAPI(Context context, Boolean dropoff, int zoom, final Event.EventListener listener) {
         String json = null;
         RequestQueue requestQueue = Volley.newRequestQueue(context);
@@ -62,14 +61,9 @@ public class Event {
                                 if (fields.has("tarif normal")) {
                                     tarif = (String) fields.get("tarif_normal");
                                 }
-                                JSONArray geolocalisation = (JSONArray) fields.get("geo_point");
-                                Double latitude = (Double) geolocalisation.get(0);
-                                Double longitude = (Double) geolocalisation.get(1);
 
                                 Event event = new Event(adresse, descriptif, horaires, name, tarif);
                                 events.add(event);
-
-
                             }
                             listener.onResult(events);
                         } catch (JSONException e) {
@@ -87,7 +81,6 @@ public class Event {
         );
         // On ajoute la requête à la file d'attente
         requestQueue.add(jsonObjectRequest);
-
     }
 
     public String getAdresse() {
