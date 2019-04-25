@@ -71,21 +71,18 @@
         android:id="@+id/button"
         android:layout_width="33dp"
         android:layout_height="34dp"
-        android:layout_marginTop="3dp"
         android:layout_marginEnd="3dp"
         android:layout_marginRight="3dp"
-        android:layout_marginBottom="3dp"
         android:background="@drawable/ic_favorite_button"
-        app:layout_constraintBottom_toTopOf="@+id/tvSite"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:textOff=""
+        android:textOn=""
+        app:layout_constraintBottom_toTopOf="@+id/tvName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/tvHoraires"
-        app:layout_constraintTop_toBottomOf="@+id/tvNumero"
-        app:layout_constraintVertical_bias="0.65"
-        android:textOff=""
-        android:textOn=""
-        android:focusable="false"
-        android:focusableInTouchMode="false"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvDescriptif" />
 
 
 
