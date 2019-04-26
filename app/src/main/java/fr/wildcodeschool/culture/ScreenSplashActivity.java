@@ -22,7 +22,7 @@ public class ScreenSplashActivity extends AppCompatActivity {
                 .withHeaderText("")
                 .withFooterText("")
                 .withAfterLogoText("")
-                .withBeforeLogoText("~ Welcome ~")
+                .withBeforeLogoText("")
                 .withLogo(R.drawable.splashscreen);
 
         config.getHeaderTextView().setTextColor(Color.WHITE);
