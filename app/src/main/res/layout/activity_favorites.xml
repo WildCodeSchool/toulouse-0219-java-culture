@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ListMuseum">
+    tools:context=".FavoritesActivity">
 
     <ListView
-        android:id="@+id/listView"
-        android:layout_width="0dp"
-        android:layout_height="706dp"
+        android:id="@+id/favorites_listView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -17,8 +17,6 @@
         android:layout_marginRight="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <include layout="@layout/menu"
-        android:id="@+id/menuLayout"/>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/activity_list_view_elements" />
 </android.support.constraint.ConstraintLayout>
