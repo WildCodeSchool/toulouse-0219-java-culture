@@ -1,16 +1,12 @@
 package fr.wildcodeschool.culture;
 
 import android.content.Context;
-import android.support.v7.view.menu.ListMenuItemView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -31,10 +27,10 @@ public class ListMuseumAdapter extends ArrayAdapter<Museum> {
                     .inflate(R.layout.activity_list_view_elements, parent, false);
         }
 
-        TextView name = convertView.findViewById(R.id.tvName);
-        TextView numero = convertView.findViewById(R.id.tvNumero);
+        TextView name = convertView.findViewById(R.id.tvAdresse);
+        TextView numero = convertView.findViewById(R.id.tvDescriptif);
         TextView horaires = convertView.findViewById(R.id.tvHoraires);
-        TextView site = convertView.findViewById(R.id.tvSite);
+        TextView site = convertView.findViewById(R.id.tvName);
         TextView distance = convertView.findViewById(R.id.tvDistance);
         final TextView metro = convertView.findViewById(R.id.tvMetro);
         Button favorite = convertView.findViewById(R.id.button);
@@ -49,7 +45,7 @@ public class ListMuseumAdapter extends ArrayAdapter<Museum> {
             @Override
             public void onClick(View v) {
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
-                Museum favorites = new Museum(museum.getName(),museum.getNumero(),museum.getHoraires(),museum.getSite(),museum.getMetro(),museum.getLongitude(),museum.getLatitude(),museum.getDistance());
+                Museum favorites = new Museum(museum.getName(), museum.getNumero(), museum.getHoraires(), museum.getSite(), museum.getMetro(), museum.getLongitude(), museum.getLatitude(), museum.getDistance());
                 DatabaseReference favoritesRef = database.getReference("favorites");
                 favoritesRef.push().setValue(favorites);
             }
