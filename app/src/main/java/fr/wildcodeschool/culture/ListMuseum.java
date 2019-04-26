@@ -43,7 +43,6 @@ public class ListMuseum extends AppCompatActivity {
             }
         });
     }
-
     // Creation Menu Flottant
     public void floatingMenu() {
 
@@ -60,14 +59,14 @@ public class ListMuseum extends AppCompatActivity {
             @SuppressLint("RestrictedApi")
             @Override
             public void onClick(View v) {
-                if (i == 0) {
+                if(i == 0) {
 
                     TransitionManager.beginDelayedTransition(transitionContainer);
                     btFavorite.setVisibility(View.VISIBLE);
                     btPlaces.setVisibility(View.VISIBLE);
                     btSignOut.setVisibility(View.VISIBLE);
                     i++;
-                } else if (i == 1) {
+                } else if(i == 1) {
 
                     TransitionManager.beginDelayedTransition(transitionContainer);
                     btFavorite.setVisibility(View.GONE);

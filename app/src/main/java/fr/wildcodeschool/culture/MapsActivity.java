@@ -37,24 +37,19 @@ import java.io.InputStream;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    //private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1550;
     private static final int REQUEST_LOCATION = 4322;
     FloatingActionButton btFavorite, btBurger, btPlaces, btSignOut;
     CoordinatorLayout transitionContainer;
     private GoogleMap mMap;
     private LocationManager mLocationManager = null;
     private Location mLocationUser = null;
-    //FusedLocationProviderClient fusedLocationClient;
-
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
         checkPermission();
         floatingMenu();
     }
@@ -103,20 +98,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 Singleton singleton = Singleton.getInstance();
                 singleton.setLocationUser(mLocationUser);
-
-                //Toast.makeText(MapsActivity.this, coordinate.toString(), Toast.LENGTH_SHORT).show();
-
-                /*Intent intent = new Intent(MapsActivity.this, ListMuseum.class);
-                intent.putExtra ("mLocationUser", coord);
-                startActivity(intent);*/
-
-                //Singleton singleton = new Singleton()
-
                 float zoomLevel = 16.0f;
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coordinate, zoomLevel));
                 mMap.setMyLocationEnabled(true);
             }
-
 
             @Override
             public void onStatusChanged(String provider, int status, Bundle extras) {
@@ -137,13 +122,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         fusedLocationClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
-                // Got last known location. In some rare situations this can be null.
-                if (location != null) {
-                    // Logic to handle location object
-
-                    /*Intent intent = new Intent(MapsActivity.this, ListMuseum.class);
-                    intent.putExtra ("mLocationUser", coord);
-                    startActivity(intent);*/
+                if(location != null) {
                 }
             }
         });
@@ -153,8 +132,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
 
         mMap = googleMap;
-
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
         } else {
             mMap.setMyLocationEnabled(true);
         }
@@ -199,18 +177,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         btBurger.setOnClickListener(new View.OnClickListener() {
 
             int i = 0;
-
             @SuppressLint("RestrictedApi")
             @Override
             public void onClick(View v) {
-                if (i == 0) {
+                if(i == 0) {
 
                     TransitionManager.beginDelayedTransition(transitionContainer);
                     btFavorite.setVisibility(View.VISIBLE);
                     btPlaces.setVisibility(View.VISIBLE);
                     btSignOut.setVisibility(View.VISIBLE);
                     i++;
-                } else if (i == 1) {
+                } else if(i == 1) {
 
                     TransitionManager.beginDelayedTransition(transitionContainer);
                     btFavorite.setVisibility(View.GONE);
@@ -234,7 +211,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onClick(View v) {
                 Intent gotoListMuseum = new Intent(MapsActivity.this, ListMuseum.class);
                 startActivity(gotoListMuseum);
-
             }
         });
 

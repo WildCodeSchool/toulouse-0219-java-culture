@@ -21,13 +21,11 @@ public class ListMuseumAdapter extends ArrayAdapter<Museum> {
 
     public ListMuseumAdapter(Context context, List<Museum> museum) {
         super(context, 0, museum);
-
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
 
         final Museum museum = getItem(position);
-
         if (null == convertView) {
             convertView = LayoutInflater.from(getContext())
                     .inflate(R.layout.activity_list_view_elements, parent, false);
@@ -54,10 +52,8 @@ public class ListMuseumAdapter extends ArrayAdapter<Museum> {
                 Museum favorites = new Museum(museum.getName(),museum.getNumero(),museum.getHoraires(),museum.getSite(),museum.getMetro(),museum.getLongitude(),museum.getLatitude(),museum.getDistance());
                 DatabaseReference favoritesRef = database.getReference("favorites");
                 favoritesRef.push().setValue(favorites);
-
             }
         });
-
         return convertView;
     }
 }
