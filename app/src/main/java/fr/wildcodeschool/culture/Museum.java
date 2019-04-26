@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
+
 public class Museum {
 
     String name;
@@ -38,7 +39,6 @@ public class Museum {
 
     public static void extractJson(Context context, final Location locationUser, Boolean dropoff, int zoom, final MuseumListener listener) {
         ArrayList<Museum> museums = new ArrayList<>();
-
         String json = null;
 
         try {
@@ -160,5 +160,6 @@ public class Museum {
 
     public interface MuseumListener {
         void onResult(ArrayList<Museum> museums);
+
     }
 }

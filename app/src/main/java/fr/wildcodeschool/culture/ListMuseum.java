@@ -14,6 +14,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.transitionseverywhere.TransitionManager;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import static fr.wildcodeschool.culture.Museum.extractJson;
 

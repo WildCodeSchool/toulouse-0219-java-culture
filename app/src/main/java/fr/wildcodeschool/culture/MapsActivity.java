@@ -46,14 +46,13 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
-
     private static final int REQUEST_LOCATION = 4322;
     FloatingActionButton btFavorite, btBurger, btPlaces, btSignOut;
     CoordinatorLayout transitionContainer;
+    private boolean mMapInit = false;
     private GoogleMap mMap;
     private LocationManager mLocationManager = null;
     private Location mLocationUser = null;
-    private GoogleMap eMap;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,18 +99,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LocationListener locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-                double lat = location.getLatitude();
-                double lng = location.getLongitude();
-                LatLng coordinate = new LatLng(lat, lng);
-                mLocationUser = new Location("");
-                mLocationUser.setLatitude(lat);
-                mLocationUser.setLongitude(lng);
-
-                Singleton singleton = Singleton.getInstance();
-                singleton.setLocationUser(mLocationUser);
-                float zoomLevel = 16.0f;
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coordinate, zoomLevel));
-                mMap.setMyLocationEnabled(true);
+                setUserLocation(location);
             }
 
             @Override
@@ -133,21 +121,42 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         fusedLocationClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
-                if (location != null) {
-                }
+                setUserLocation(location);
             }
         });
+    }
+
+    @SuppressLint("MissingPermission")
+    private void setUserLocation(Location location) {
+        if (location != null) {
+            double lat = location.getLatitude();
+            double lng = location.getLongitude();
+            LatLng coordinate = new LatLng(lat, lng);
+            mLocationUser = new Location("");
+            mLocationUser.setLatitude(lat);
+            mLocationUser.setLongitude(lng);
+
+            Singleton singleton = Singleton.getInstance();
+            singleton.setLocationUser(mLocationUser);
+            float zoomLevel = 16.0f;
+            if (mMap != null && !mMapInit) {
+                mMapInit = true;
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coordinate, zoomLevel));
+                mMap.setMyLocationEnabled(true);
+            }
+        }
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
         mMap = googleMap;
-        eMap = googleMap;
+
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
         } else {
             mMap.setMyLocationEnabled(true);
+            setUserLocation(mLocationUser);
         }
         String json = null;
         try {
@@ -177,9 +186,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        LatLng toulouse = new LatLng(43.604, 1.443);
-        float zoomLevel = 14.0f; //This goes up to 21
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(toulouse, zoomLevel));
 
         RequestQueue requestQueue = Volley.newRequestQueue(MapsActivity.this);
         String url = "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=agenda-des-manifestations-culturelles-so-toulouse&facet=type_de_manifestation&refine.type_de_manifestation=Culturelle";
@@ -202,9 +208,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 Double longitude = (Double) geolocalisation.get(1);
 
                                 final LatLng event = new LatLng(latitude, longitude);
-                                eMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.icon)).position(event).title(name));
+                                mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.icon)).position(event).title(name));
 
-                                eMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+                                mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
                                     @Override
                                     public void onInfoWindowClick(Marker marker) {
                                         Intent intent = new Intent(MapsActivity.this, EventsActivity.class);
