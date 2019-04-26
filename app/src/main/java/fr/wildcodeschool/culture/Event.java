@@ -49,8 +49,8 @@ public class Event {
                             for (int i = 0; i < records.length(); i++) {
                                 JSONObject rec = (JSONObject) records.get(i);
                                 JSONObject fields = rec.getJSONObject("fields");
-                                String adresse ="";
-                                if (fields.has("lieu_adresse_2")){
+                                String adresse = "";
+                                if (fields.has("lieu_adresse_2")) {
                                     adresse = (String) fields.get("lieu_adresse_2");
                                 }
 

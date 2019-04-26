@@ -11,7 +11,6 @@ public class ListViewElements extends AppCompatActivity {
         setContentView(R.layout.activity_list_view_elements);
 
 
-
     }
 
 }
