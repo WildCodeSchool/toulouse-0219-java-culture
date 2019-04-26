@@ -46,11 +46,10 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
-    private boolean mMapInit = false;
-
     private static final int REQUEST_LOCATION = 4322;
     FloatingActionButton btFavorite, btBurger, btPlaces, btSignOut;
     CoordinatorLayout transitionContainer;
+    private boolean mMapInit = false;
     private GoogleMap mMap;
     private LocationManager mLocationManager = null;
     private Location mLocationUser = null;
@@ -126,8 +125,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
     }
+
     @SuppressLint("MissingPermission")
-    private void setUserLocation(Location location){
+    private void setUserLocation(Location location) {
         if (location != null) {
             double lat = location.getLatitude();
             double lng = location.getLongitude();
@@ -139,7 +139,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             Singleton singleton = Singleton.getInstance();
             singleton.setLocationUser(mLocationUser);
             float zoomLevel = 16.0f;
-            if(mMap != null && !mMapInit ) {
+            if (mMap != null && !mMapInit) {
                 mMapInit = true;
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coordinate, zoomLevel));
                 mMap.setMyLocationEnabled(true);
