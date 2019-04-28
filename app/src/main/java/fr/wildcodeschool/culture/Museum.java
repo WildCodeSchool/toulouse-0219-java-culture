@@ -21,7 +21,7 @@ public class Museum {
     String metro;
     double latitude;
     double longitude;
-    private float distance;
+    float distance;
 
     public Museum(String name, String numero, String horaires, String site, String metro, double longitude, double latitude, float distance) {
         this.name = name;
@@ -162,4 +162,5 @@ public class Museum {
         void onResult(ArrayList<Museum> museums);
 
     }
+
 }

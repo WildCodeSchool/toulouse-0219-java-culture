@@ -11,12 +11,20 @@ import android.widget.TextView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class ListMuseumAdapter extends ArrayAdapter<Museum> {
 
     public ListMuseumAdapter(Context context, List<Museum> museum) {
         super(context, 0, museum);
+        Collections.sort(museum, new Comparator<Museum>(){
+            public int compare(Museum museum1, Museum museum2) {
+                return Float.compare(museum1.getDistance(),museum2.getDistance());
+            }
+        });
+
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
