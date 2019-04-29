@@ -35,6 +35,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.transitionseverywhere.TransitionManager;
 
 import org.json.JSONArray;
@@ -47,7 +48,7 @@ import java.util.ArrayList;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
     private static final int REQUEST_LOCATION = 4322;
-    FloatingActionButton btFavorite, btBurger, btPlaces, btSignOut;
+    FloatingActionButton btFavorite, btBurger, btPlaces, btProfile, btSignOut;
     CoordinatorLayout transitionContainer;
     private boolean mMapInit = false;
     private GoogleMap mMap;
@@ -244,6 +245,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         btBurger = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingActionButton);
         btFavorite = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingFavoriteBt);
         btPlaces = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingListPlaces);
+        btProfile = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingProfile);
         btSignOut = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingSignOut);
 
         btBurger.setOnClickListener(new View.OnClickListener() {
@@ -256,16 +258,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 if (i == 0) {
 
                     TransitionManager.beginDelayedTransition(transitionContainer);
-                    btFavorite.setVisibility(View.VISIBLE);
                     btPlaces.setVisibility(View.VISIBLE);
-                    btSignOut.setVisibility(View.VISIBLE);
+                    btProfile.setVisibility(View.VISIBLE);
                     i++;
                 } else if (i == 1) {
 
                     TransitionManager.beginDelayedTransition(transitionContainer);
-                    btFavorite.setVisibility(View.GONE);
                     btPlaces.setVisibility(View.GONE);
-                    btSignOut.setVisibility(View.GONE);
+                    btProfile.setVisibility(View.GONE);
                     i = 0;
                 }
             }
@@ -295,5 +295,48 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 startActivity(new Intent(MapsActivity.this, SignIn.class));
             }
         });
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // User is signed in
+            btBurger.setOnClickListener(new View.OnClickListener() {
+                int i = 0;
+
+                @SuppressLint("RestrictedApi")
+                @Override
+                public void onClick(View v) {
+                    if (i == 0) {
+                        TransitionManager.beginDelayedTransition(transitionContainer);
+                        btFavorite.setVisibility(View.VISIBLE);
+                        btPlaces.setVisibility(View.VISIBLE);
+                        btProfile.setVisibility(View.VISIBLE);
+                        btSignOut.setVisibility(View.VISIBLE);
+                        i++;
+                    } else if (i == 1) {
+                        TransitionManager.beginDelayedTransition(transitionContainer);
+                        btFavorite.setVisibility(View.GONE);
+                        btPlaces.setVisibility(View.GONE);
+                        btProfile.setVisibility(View.GONE);
+                        btSignOut.setVisibility(View.GONE);
+                        i = 0;
+                    }
+                }
+            });
+            btProfile.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(MapsActivity.this, Profile.class));
+                }
+            });
+
+        } else {
+            // No user is signed in
+            btProfile.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(MapsActivity.this, SignIn.class));
+                }
+            });
+        }
     }
 }
