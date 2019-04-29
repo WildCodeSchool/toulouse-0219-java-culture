@@ -3,7 +3,8 @@ package fr.wildcodeschool.culture;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -27,7 +28,8 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 public class SignIn extends AppCompatActivity {
 
-
+    private static final String TAG_GOOGLE = "GoogleActivity";
+    private static final int RC_SIGN_IN = 9001;
     private Button mBtAlreadyHaveAccount;
     private ProgressBar mProgressBarSign;
     private EditText mEtEmail;
@@ -35,11 +37,7 @@ public class SignIn extends AppCompatActivity {
     private Button mBtSignIn, mBtBack;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    private static final String TAG_GOOGLE = "GoogleActivity";
-    private static final int RC_SIGN_IN = 9001;
     private GoogleSignInClient mGoogleSignInClient;
-    ;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,7 +97,7 @@ public class SignIn extends AppCompatActivity {
                 .requestEmail()
                 .build();
 
-        mGoogleSignInClient =GoogleSignIn.getClient(this,gso);
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
     }
 
     @Override
@@ -129,6 +127,7 @@ public class SignIn extends AppCompatActivity {
             });
         }
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
