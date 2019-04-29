@@ -23,8 +23,7 @@ public class SignIn extends AppCompatActivity {
     private ProgressBar mProgressBarSign;
     private EditText mEtEmail;
     private EditText mEtPassword;
-    private Button mBtSignIn;
-
+    private Button mBtSignIn, mBtBack;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -34,15 +33,12 @@ public class SignIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
         mAuth = FirebaseAuth.getInstance();
-
-
         mEtEmail = findViewById(R.id.etEmail);
         mEtPassword = findViewById(R.id.etPassword);
-
-
         mBtAlreadyHaveAccount = findViewById(R.id.btAlreadyhaveAccount);
         mProgressBarSign = findViewById(R.id.progressBarSign);
         mBtSignIn = findViewById(R.id.btSignIn);
+        mBtBack = findViewById(R.id.btBack);
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -67,6 +63,14 @@ public class SignIn extends AppCompatActivity {
             public void onClick(View v) {
                 Intent goToRegister = new Intent(SignIn.this, RegisterActivity.class);
                 startActivity(goToRegister);
+            }
+        });
+
+        mBtBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToMaps = new Intent(SignIn.this, MapsActivity.class);
+                startActivity(goToMaps);
             }
         });
     }

@@ -11,9 +11,9 @@
         android:layout_gravity="bottom|right"
         android:layout_marginRight="26dp"
         android:layout_marginBottom="100dp"
+        android:alpha="0.70"
         android:backgroundTint="@color/colorPrimary"
         android:clickable="true"
-        android:alpha="0.70"
         app:fabSize="normal"
         app:srcCompat="@drawable/ic_burger" />
 
@@ -22,13 +22,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
-        android:layout_marginRight="26dp"
-        android:layout_marginBottom="200dp"
+        android:layout_marginRight="36dp"
+        android:layout_marginBottom="270dp"
+        android:alpha="0.70"
         android:backgroundTint="@color/colorPrimary"
         android:clickable="true"
-        android:alpha="0.70"
         android:visibility="gone"
-        app:fabSize="normal"
+        app:fabSize="mini"
         app:srcCompat="@android:drawable/btn_star_big_on" />
 
     <android.support.design.widget.FloatingActionButton
@@ -36,27 +36,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
-        android:layout_marginRight="26dp"
-        android:layout_marginBottom="300dp"
+        android:layout_marginRight="36dp"
+        android:layout_marginBottom="170dp"
+        android:alpha="0.70"
         android:backgroundTint="@color/colorPrimary"
         android:clickable="true"
-        android:alpha="0.70"
         android:visibility="gone"
-        app:fabSize="normal"
+        app:fabSize="mini"
         app:srcCompat="@android:drawable/ic_dialog_map" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginRight="36dp"
+        android:layout_marginBottom="220dp"
+        android:alpha="0.70"
+        android:backgroundTint="@color/colorPrimary"
+        android:clickable="true"
+        android:visibility="gone"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/ic_person_black_24dp" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingSignOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
-        android:layout_marginRight="26dp"
-        android:layout_marginBottom="400dp"
+        android:layout_marginRight="36dp"
+        android:layout_marginBottom="320dp"
+        android:alpha="0.70"
         android:backgroundTint="@color/colorPrimary"
         android:clickable="true"
-        android:alpha="0.70"
         android:visibility="gone"
-        app:fabSize="normal"
+        app:fabSize="mini"
         app:srcCompat="@drawable/ic_sign_out" />
 
 </android.support.design.widget.CoordinatorLayout>
