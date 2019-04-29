@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Culture</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_maps2">Map</string>
@@ -20,4 +20,5 @@
     <string name="your_password">Your Password</string>
     <string name="sign_in">SIGN IN</string>
     <string name="AddFavorites">Add to favorites with success !</string>
+    <string name="x" tools:ignore="ExtraTranslation">X</string>
 </resources>

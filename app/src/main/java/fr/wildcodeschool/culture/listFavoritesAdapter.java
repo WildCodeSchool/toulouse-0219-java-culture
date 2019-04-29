@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
@@ -16,7 +15,7 @@ public class listFavoritesAdapter extends ArrayAdapter<Museum> {
         super(context, 0, museum);
     }
 
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         final Museum museum = getItem(position);
 
@@ -37,7 +36,11 @@ public class listFavoritesAdapter extends ArrayAdapter<Museum> {
         site.setText(museum.getSite());
         metro.setText(museum.getMetro());
 
+
         return convertView;
+
+
+
     }
 }
 

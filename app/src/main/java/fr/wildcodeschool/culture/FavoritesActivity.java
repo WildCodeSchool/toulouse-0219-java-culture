@@ -2,7 +2,10 @@ package fr.wildcodeschool.culture;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,19 +27,31 @@ public class FavoritesActivity extends AppCompatActivity {
         DatabaseReference myRef = database.getReference("favorites");
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                List<Museum> listFavorites = new ArrayList<>();
-                for (DataSnapshot museumSnapshot : dataSnapshot.getChildren()) {
-                    Museum favorites = museumSnapshot.getValue(Museum.class);
+            public void onDataChange(final DataSnapshot dataSnapshot) {
+                final List<Museum> listFavorites = new ArrayList<>();
+                for (final DataSnapshot museumSnapshot : dataSnapshot.getChildren()) {
+                    final Museum favorites = museumSnapshot.getValue(Museum.class);
                     listFavorites.add(favorites);
 
-                    ListView listEgg = findViewById(R.id.favorites_listView);
-                    listFavoritesAdapter adapter = new listFavoritesAdapter(FavoritesActivity.this, listFavorites);
-                    listEgg.setAdapter(adapter);
+                    final ListView listFavorite = findViewById(R.id.favorites_listView);
+                    final listFavoritesAdapter adapter = new listFavoritesAdapter(FavoritesActivity.this, listFavorites);
+                    listFavorite.setAdapter(adapter);
+                    listFavorite.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            listFavorites.remove(position);
+                            adapter.notifyDataSetChanged();
+                            deleteMuseum(favorites);
+                        }
 
+                        private void deleteMuseum(String favorites) {
+                            DatabaseReference dbMuseum = FirebaseDatabase.getInstance().getReference("favorites").child(favorites);
+                            dbMuseum.removeValue();
+                            Toast.makeText(FavoritesActivity.this, "Museum is Deleted", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
