@@ -19,9 +19,9 @@ public class ListMuseumAdapter extends ArrayAdapter<Museum> {
 
     public ListMuseumAdapter(Context context, List<Museum> museum) {
         super(context, 0, museum);
-        Collections.sort(museum, new Comparator<Museum>(){
+        Collections.sort(museum, new Comparator<Museum>() {
             public int compare(Museum museum1, Museum museum2) {
-                return Float.compare(museum1.getDistance(),museum2.getDistance());
+                return Float.compare(museum1.getDistance(), museum2.getDistance());
             }
         });
 

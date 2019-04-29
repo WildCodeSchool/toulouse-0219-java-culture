@@ -4,7 +4,7 @@ import android.location.Location;
 
 class Singleton {
     private static Singleton ourInstance;
-    private Location locationUser;
+     Location locationUser;
 
     private Singleton() {
     }

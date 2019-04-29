@@ -64,7 +64,7 @@ public class Museum {
                 Double longitude = (Double) geolocalisation.get(1);
                 museumLocation.setLatitude(latitude);
                 museumLocation.setLongitude(longitude);
-                float distance = Math.round(museumLocation.distanceTo(locationUser));
+                float distance = museumLocation.distanceTo(locationUser);
 
                 if (fields.has("eq_telephone")) {
                     numero = (String) fields.get("eq_telephone");
@@ -86,6 +86,7 @@ public class Museum {
                 }
                 Museum museum = new Museum(name, numero, horaires, site, metro, longitude, latitude, distance);
                 museums.add(museum);
+
             }
 
         } catch (JSONException e) {
