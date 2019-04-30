@@ -31,6 +31,14 @@
           }
         },
         {
+          "client_id": "815219067847-imj93k005oa6mnt8enk9sbbuajkd79cj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fr.wildcodeschool.culture",
+            "certificate_hash": "1e989a04d9ffda32b838c00fac9684bbe1408be9"
+          }
+        },
+        {
           "client_id": "815219067847-rsu96c10378p10knqoq9a18ode113esl.apps.googleusercontent.com",
           "client_type": 3
         }
