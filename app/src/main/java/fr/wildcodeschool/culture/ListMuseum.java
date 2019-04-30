@@ -22,7 +22,9 @@ import static fr.wildcodeschool.culture.Museum.extractJson;
 public class ListMuseum extends AppCompatActivity {
     private static boolean dropOff = true;
     private static int zoom = 15;
-    FloatingActionButton btFavorite, btBurger, btPlaces, btProfile, btSignOut, btCommunity;
+
+    FloatingActionButton btFavorite, btBurger, btPlaces, btProfile, btEvents, btSignOut, btCommunity;
+
     Button btBack;
     CoordinatorLayout transitionContainer;
     private FirebaseAuth mAuth;
@@ -57,7 +59,7 @@ public class ListMuseum extends AppCompatActivity {
         btProfile = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingProfile);
         btSignOut = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingSignOut);
         btCommunity = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingCommunity);
-
+        btEvents = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingListEvents);
         btBack = findViewById(R.id.btBackInList);
 
         btBack.setOnClickListener(new View.OnClickListener() {
@@ -79,12 +81,14 @@ public class ListMuseum extends AppCompatActivity {
 
                     TransitionManager.beginDelayedTransition(transitionContainer);
                     btPlaces.setVisibility(View.VISIBLE);
+                    btEvents.setVisibility(View.VISIBLE);
                     btProfile.setVisibility(View.VISIBLE);
                     i++;
                 } else if (i == 1) {
 
                     TransitionManager.beginDelayedTransition(transitionContainer);
                     btPlaces.setVisibility(View.GONE);
+                    btEvents.setVisibility(View.GONE);
                     btProfile.setVisibility(View.GONE);
                     i = 0;
                 }
@@ -103,6 +107,14 @@ public class ListMuseum extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent gotoListMuseum = new Intent(ListMuseum.this, MapsActivity.class);
+                startActivity(gotoListMuseum);
+            }
+        });
+//TODO changer intent vers page liste events
+        btEvents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent gotoListMuseum = new Intent(ListMuseum.this, MainActivity.class);
                 startActivity(gotoListMuseum);
             }
         });
@@ -137,7 +149,7 @@ public class ListMuseum extends AppCompatActivity {
                         TransitionManager.beginDelayedTransition(transitionContainer);
                         btFavorite.setVisibility(View.VISIBLE);
                         btPlaces.setVisibility(View.VISIBLE);
-                        btProfile.setVisibility(View.VISIBLE);
+                        btEvents.setVisibility(View.VISIBLE);
                         btSignOut.setVisibility(View.VISIBLE);
                         btCommunity.setVisibility(View.VISIBLE);
                         i++;
@@ -145,20 +157,13 @@ public class ListMuseum extends AppCompatActivity {
                         TransitionManager.beginDelayedTransition(transitionContainer);
                         btFavorite.setVisibility(View.GONE);
                         btPlaces.setVisibility(View.GONE);
-                        btProfile.setVisibility(View.GONE);
+                        btEvents.setVisibility(View.GONE);
                         btSignOut.setVisibility(View.GONE);
                         btCommunity.setVisibility(View.GONE);
                         i = 0;
                     }
                 }
             });
-            btProfile.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(ListMuseum.this, Profile.class));
-                }
-            });
-
         } else {
             // No user is signed in
             btProfile.setOnClickListener(new View.OnClickListener() {

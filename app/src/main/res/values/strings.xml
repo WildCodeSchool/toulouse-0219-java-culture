@@ -30,4 +30,7 @@
     <string name="backdrop_title">LOVE MUSIC</string>
     <string name="backdrop_subtitle">This season top 20 albums</string>
     <string name="hello_card">Hello Card</string>
+    <string name="liste_des_musees">Liste des musées</string>
+    <string name="liste_des_evenements">Liste des évènements</string>
+    <string name="favoris">Favoris</string>
 </resources>
