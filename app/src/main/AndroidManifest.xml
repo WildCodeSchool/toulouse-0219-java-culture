@@ -18,8 +18,9 @@
         android:roundIcon="@mipmap/museum_in_my_city_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ListEventsActivity"></activity>
-        <activity android:name=".FavoritesActivity"></activity>
+        <activity android:name=".Profile"></activity>
+        <activity android:name=".ListEventsActivity" />
+        <activity android:name=".FavoritesActivity" />
         <activity android:name=".ScreenSplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,8 +35,7 @@
             android:name=".SignIn"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".MenuBurgerActivity" />
-        <activity android:name=".EventsActivity">
-        </activity>
+        <activity android:name=".EventsActivity"></activity>
         <activity android:name=".ListViewElements" />
         <activity android:name=".ListMuseum" />
         <!--
@@ -49,11 +49,13 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/culture">
-        </activity>
+            android:label="@string/culture"></activity>
         <activity android:name=".MainActivity" />
     </application>
 

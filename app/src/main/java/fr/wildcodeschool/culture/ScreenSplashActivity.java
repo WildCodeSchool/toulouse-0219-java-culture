@@ -1,8 +1,8 @@
 package fr.wildcodeschool.culture;
 
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import gr.net.maroulis.library.EasySplashScreen;
@@ -13,9 +13,6 @@ public class ScreenSplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen_splash);
-
-
-
 
         EasySplashScreen config = new EasySplashScreen(ScreenSplashActivity.this)
                 .withFullScreen()

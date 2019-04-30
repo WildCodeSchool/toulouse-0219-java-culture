@@ -11,19 +11,25 @@ import android.widget.TextView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class ListMuseumAdapter extends ArrayAdapter<Museum> {
 
     public ListMuseumAdapter(Context context, List<Museum> museum) {
         super(context, 0, museum);
+        Collections.sort(museum, new Comparator<Museum>() {
+            public int compare(Museum museum1, Museum museum2) {
+                return Float.compare(museum1.getDistance(), museum2.getDistance());
+            }
+        });
 
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
 
         final Museum museum = getItem(position);
-
         if (null == convertView) {
             convertView = LayoutInflater.from(getContext())
                     .inflate(R.layout.activity_list_view_elements, parent, false);
@@ -33,25 +39,26 @@ public class ListMuseumAdapter extends ArrayAdapter<Museum> {
         TextView numero = convertView.findViewById(R.id.tvDescriptif);
         TextView horaires = convertView.findViewById(R.id.tvHoraires);
         TextView site = convertView.findViewById(R.id.tvName);
-        TextView metro = convertView.findViewById(R.id.tvMetro);
+        TextView distance = convertView.findViewById(R.id.tvDistance);
+        final TextView metro = convertView.findViewById(R.id.tvMetro);
         Button favorite = convertView.findViewById(R.id.button);
 
         name.setText(museum.getName());
         numero.setText(museum.getNumero());
         horaires.setText(museum.getHoraires());
         site.setText(museum.getSite());
+        distance.setText(Float.toString(museum.getDistance()));
         metro.setText(museum.getMetro());
+
         favorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
-                Museum favorites = new Museum(museum.getName(),museum.getNumero(),museum.getHoraires(),museum.getSite(),museum.getMetro());
+                Museum favorites = new Museum(museum.getName(), museum.getNumero(), museum.getHoraires(), museum.getSite(), museum.getMetro(), museum.getLongitude(), museum.getLatitude(), museum.getDistance());
                 DatabaseReference favoritesRef = database.getReference("favorites");
                 favoritesRef.push().setValue(favorites);
-
             }
         });
-
         return convertView;
     }
 }

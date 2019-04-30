@@ -2,8 +2,12 @@ package fr.wildcodeschool.culture;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -19,6 +23,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -27,7 +33,9 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.transitionseverywhere.TransitionManager;
 
 import org.json.JSONArray;
@@ -39,61 +47,121 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
-
-    private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1550;
-    FloatingActionButton btFavorite, btBurger, btPlaces, btSignOut;
+    private static final int REQUEST_LOCATION = 4322;
+    FloatingActionButton btFavorite, btBurger, btPlaces, btProfile, btEvents, btSignOut;
     CoordinatorLayout transitionContainer;
+    private boolean mMapInit = false;
     private GoogleMap mMap;
-    private  GoogleMap eMap;
+    private LocationManager mLocationManager = null;
+    private Location mLocationUser = null;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-        checkLocationPermission();
+        checkPermission();
         floatingMenu();
     }
 
-    private void checkLocationPermission() {
-        if (ContextCompat.checkSelfPermission(MapsActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)
+    private void checkPermission() {
+        if (ContextCompat.checkSelfPermission(MapsActivity.this,
+                Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
-            // Permission not granted : ask for it
-            ActivityCompat.requestPermissions(MapsActivity.this,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                    MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+            if (ActivityCompat.shouldShowRequestPermissionRationale(MapsActivity.this,
+                    Manifest.permission.ACCESS_FINE_LOCATION)) {
+                ActivityCompat.requestPermissions(MapsActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
+            } else {
+                ActivityCompat.requestPermissions(MapsActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
+            }
         } else {
-            // Permission granted
+            initLocation();
         }
     }
 
-    public void onRequestPermissionsResult(int requestCode,
-                                           String[] permissions, int[] grantResults) {
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permission, int[] grantResults) {
         switch (requestCode) {
-            case MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION: {
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // Permission granted
+            case REQUEST_LOCATION: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    initLocation();
                 } else {
-                    // Permission denied
+
                 }
-                break;
+                return;
             }
         }
     }
+
+    @SuppressLint("MissingPermission")
+    private void initLocation() {
+        FusedLocationProviderClient fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        fusedLocationClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+                setUserLocation(location);
+            }
+        });
+        mLocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        LocationListener locationListener = new LocationListener() {
+
+
+            @Override
+            public void onLocationChanged(Location location) {
+                setUserLocation(location);
+            }
+
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) {
+            }
+
+            @Override
+            public void onProviderEnabled(String provider) {
+            }
+
+            @Override
+            public void onProviderDisabled(String provider) {
+            }
+        };
+        mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 2, locationListener);
+
+
+    }
+
+    @SuppressLint("MissingPermission")
+    private void setUserLocation(Location location) {
+        if (location != null) {
+            double lat = location.getLatitude();
+            double lng = location.getLongitude();
+            LatLng coordinate = new LatLng(lat, lng);
+            mLocationUser = new Location("");
+            mLocationUser.setLatitude(lat);
+            mLocationUser.setLongitude(lng);
+
+            Singleton singleton = Singleton.getInstance();
+            singleton.setLocationUser(mLocationUser);
+            float zoomLevel = 16.0f;
+            if (mMap != null && !mMapInit) {
+                mMapInit = true;
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coordinate, zoomLevel));
+                mMap.setMyLocationEnabled(true);
+            }
+        }
+    }
+
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
         mMap = googleMap;
-        eMap = googleMap;
+        initLocation();
 
-        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
         } else {
             mMap.setMyLocationEnabled(true);
+            setUserLocation(mLocationUser);
         }
         String json = null;
         try {
@@ -116,7 +184,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     String name = (String) fields.get("eq_nom_equipement");
                     Double latitude = (Double) geolocalisation.get(0);
                     Double longitude = (Double) geolocalisation.get(1);
-
                     LatLng museum = new LatLng(latitude, longitude);
                     mMap.addMarker(new MarkerOptions().position(museum).title(name));
                 }
@@ -124,9 +191,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        LatLng toulouse = new LatLng(43.604, 1.443);
-        float zoomLevel = 14.0f; //This goes up to 21
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(toulouse, zoomLevel));
 
         RequestQueue requestQueue = Volley.newRequestQueue(MapsActivity.this);
         String url = "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=agenda-des-manifestations-culturelles-so-toulouse&facet=type_de_manifestation&refine.type_de_manifestation=Culturelle";
@@ -149,12 +213,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 Double longitude = (Double) geolocalisation.get(1);
 
                                 final LatLng event = new LatLng(latitude, longitude);
-                                eMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.icon)).position(event).title(name));
+                                mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.icon)).position(event).title(name));
 
-                                eMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+                                mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
                                     @Override
                                     public void onInfoWindowClick(Marker marker) {
-                                        Intent intent = new Intent(MapsActivity.this,EventsActivity.class);
+                                        Intent intent = new Intent(MapsActivity.this, EventsActivity.class);
                                         startActivity(intent);
                                     }
                                 });
@@ -181,6 +245,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         btBurger = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingActionButton);
         btFavorite = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingFavoriteBt);
         btPlaces = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingListPlaces);
+        btProfile = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingProfile);
+        btEvents = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingListEvents);
         btSignOut = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingSignOut);
 
         btBurger.setOnClickListener(new View.OnClickListener() {
@@ -193,16 +259,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 if (i == 0) {
 
                     TransitionManager.beginDelayedTransition(transitionContainer);
-                    btFavorite.setVisibility(View.VISIBLE);
                     btPlaces.setVisibility(View.VISIBLE);
-                    btSignOut.setVisibility(View.VISIBLE);
+                    btEvents.setVisibility(View.VISIBLE);
+                    btProfile.setVisibility(View.VISIBLE);
                     i++;
                 } else if (i == 1) {
 
                     TransitionManager.beginDelayedTransition(transitionContainer);
-                    btFavorite.setVisibility(View.GONE);
                     btPlaces.setVisibility(View.GONE);
-                    btSignOut.setVisibility(View.GONE);
+                    btEvents.setVisibility(View.GONE);
+                    btProfile.setVisibility(View.GONE);
                     i = 0;
                 }
             }
@@ -219,9 +285,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         btPlaces.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent gotoMain = new Intent(MapsActivity.this, ListMuseum.class);
-                startActivity(gotoMain);
+                Intent gotoListMuseum = new Intent(MapsActivity.this, ListMuseum.class);
+                startActivity(gotoListMuseum);
+            }
+        });
 
+        //TODO changer intent vers page liste events
+        btEvents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent gotoListMuseum = new Intent(MapsActivity.this, MainActivity.class);
+                startActivity(gotoListMuseum);
             }
         });
 
@@ -234,6 +308,41 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
-    }
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // User is signed in
+            btBurger.setOnClickListener(new View.OnClickListener() {
+                int i = 0;
 
+                @SuppressLint("RestrictedApi")
+                @Override
+                public void onClick(View v) {
+                    if (i == 0) {
+                        TransitionManager.beginDelayedTransition(transitionContainer);
+                        btFavorite.setVisibility(View.VISIBLE);
+                        btPlaces.setVisibility(View.VISIBLE);
+                        btEvents.setVisibility(View.VISIBLE);
+                        btSignOut.setVisibility(View.VISIBLE);
+                        i++;
+                    } else if (i == 1) {
+                        TransitionManager.beginDelayedTransition(transitionContainer);
+                        btFavorite.setVisibility(View.GONE);
+                        btPlaces.setVisibility(View.GONE);
+                        btEvents.setVisibility(View.GONE);
+                        btSignOut.setVisibility(View.GONE);
+                        i = 0;
+                    }
+                }
+            });
+
+        } else {
+            // No user is signed in
+            btProfile.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(MapsActivity.this, SignIn.class));
+                }
+            });
+        }
+    }
 }
