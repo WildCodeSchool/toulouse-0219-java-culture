@@ -49,6 +49,7 @@ public class ListMuseumAdapter extends ArrayAdapter<Museum> {
         site.setText(museum.getSite());
         distance.setText(Float.toString(museum.getDistance()));
         metro.setText(museum.getMetro());
+
         favorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -7,12 +7,19 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class ListEventsAdapter extends ArrayAdapter<Event> {
 
     public ListEventsAdapter(Context context, List<Event> event) {
         super(context, 0, event);
+        Collections.sort(event, new Comparator<Event>() {
+            public int compare(Event event1, Event event2) {
+                return Float.compare(event1.getDistance(), event2.getDistance());
+            }
+        });
 
     }
 
@@ -30,6 +37,7 @@ public class ListEventsAdapter extends ArrayAdapter<Event> {
         TextView horaires = convertView.findViewById(R.id.tvHoraires);
         TextView name = convertView.findViewById(R.id.tvName);
         TextView tarif = convertView.findViewById(R.id.tvTarif);
+        TextView distance = convertView.findViewById(R.id.tvDistanceEvent);
 
 
         adresse.setText(event.getAdresse());
@@ -37,6 +45,7 @@ public class ListEventsAdapter extends ArrayAdapter<Event> {
         horaires.setText(event.getHoraires());
         name.setText(event.getName());
         tarif.setText(event.getTarif());
+        distance.setText(Float.toString(event.getDistance()));
 
 
         return convertView;
