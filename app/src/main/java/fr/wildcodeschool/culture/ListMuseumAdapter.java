@@ -47,7 +47,7 @@ public class ListMuseumAdapter extends ArrayAdapter<Museum> {
         numero.setText(museum.getNumero());
         horaires.setText(museum.getHoraires());
         site.setText(museum.getSite());
-        distance.setText(Float.toString(museum.getDistance())+"  m");
+        distance.setText(String.format("%s m", Float.toString(museum.getDistance())));
         metro.setText(museum.getMetro());
 
         favorite.setOnClickListener(new View.OnClickListener() {
