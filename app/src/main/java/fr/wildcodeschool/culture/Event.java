@@ -75,7 +75,7 @@ public class Event {
                                 Double longitude = (Double) geolocalisation.get(1);
                                 eventLocation.setLatitude(latitude);
                                 eventLocation.setLongitude(longitude);
-                                float distance = eventLocation.distanceTo(locationUser);
+                                float distance = Math.round(eventLocation.distanceTo(locationUser));
 
                                 Event event = new Event(adresse, descriptif, horaires, name, tarif,latitude,longitude,distance);
                                 events.add(event);
