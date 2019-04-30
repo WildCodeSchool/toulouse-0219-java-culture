@@ -294,7 +294,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         btEvents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent gotoListMuseum = new Intent(MapsActivity.this, MainActivity.class);
+                Intent gotoListMuseum = new Intent(MapsActivity.this, EventsActivity.class);
                 startActivity(gotoListMuseum);
             }
         });

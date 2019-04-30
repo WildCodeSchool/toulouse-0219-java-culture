@@ -57,7 +57,7 @@ public class ListMuseum extends AppCompatActivity {
         btProfile = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingProfile);
         btSignOut = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingSignOut);
         btEvents = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingListEvents);
-        btBack = findViewById(R.id.btBackInList);
+        btBack = findViewById(R.id.btBack);
 
         btBack.setOnClickListener(new View.OnClickListener() {
             @Override
