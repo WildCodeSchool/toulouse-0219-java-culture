@@ -21,4 +21,7 @@
     <string name="sign_in">SIGN IN</string>
     <string name="AddFavorites">Add to favorites with success !</string>
     <string name="back_tp_map">Back to Map</string>
+    <string name="liste_des_musees">Liste des musées</string>
+    <string name="liste_des_evenements">Liste des évènements</string>
+    <string name="favoris">Favoris</string>
 </resources>
