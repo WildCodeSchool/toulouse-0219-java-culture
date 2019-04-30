@@ -60,7 +60,7 @@ public class ListMuseum extends AppCompatActivity {
         btSignOut = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingSignOut);
         btCommunity = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingCommunity);
         btEvents = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingListEvents);
-        btBack = findViewById(R.id.btBackInList);
+        btBack = findViewById(R.id.btBack);
 
         btBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,11 +110,10 @@ public class ListMuseum extends AppCompatActivity {
                 startActivity(gotoListMuseum);
             }
         });
-//TODO changer intent vers page liste events
         btEvents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent gotoListMuseum = new Intent(ListMuseum.this, MainActivity.class);
+                Intent gotoListMuseum = new Intent(ListMuseum.this, EventsActivity.class);
                 startActivity(gotoListMuseum);
             }
         });

@@ -104,11 +104,10 @@ public class FavoritesActivity extends AppCompatActivity {
                 startActivity(goToFavorites);
             }
         });
-//TODO changer intent
         btEvents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent gotoListMuseum = new Intent(FavoritesActivity.this, MainActivity.class);
+                Intent gotoListMuseum = new Intent(FavoritesActivity.this, EventsActivity.class);
                 startActivity(gotoListMuseum);
             }
         });

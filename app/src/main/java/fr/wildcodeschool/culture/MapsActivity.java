@@ -31,7 +31,6 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -215,13 +214,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 final LatLng event = new LatLng(latitude, longitude);
                                 mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.icon)).position(event).title(name));
 
-                                mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
-                                    @Override
-                                    public void onInfoWindowClick(Marker marker) {
-                                        Intent intent = new Intent(MapsActivity.this, EventsActivity.class);
-                                        startActivity(intent);
-                                    }
-                                });
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -296,7 +288,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         btEvents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent gotoListMuseum = new Intent(MapsActivity.this, MainActivity.class);
+                Intent gotoListMuseum = new Intent(MapsActivity.this, EventsActivity.class);
                 startActivity(gotoListMuseum);
             }
         });
