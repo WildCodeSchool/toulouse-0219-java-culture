@@ -45,7 +45,7 @@ public class ListEventsAdapter extends ArrayAdapter<Event> {
         horaires.setText(event.getHoraires());
         name.setText(event.getName());
         tarif.setText(event.getTarif());
-        distance.setText(Float.toString(event.getDistance()));
+        distance.setText(String.format("%s m", Float.toString(event.getDistance())));
 
 
         return convertView;
