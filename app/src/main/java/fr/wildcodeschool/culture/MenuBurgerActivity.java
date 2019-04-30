@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.transitionseverywhere.TransitionManager;
 
 public class MenuBurgerActivity extends AppCompatActivity {
-        FloatingActionButton btFavorite, btBurger, btPlaces;
+        FloatingActionButton btFavorite, btBurger, btPlaces, btCommunity;
         CoordinatorLayout transitionContainer;
         @Override
         protected void onCreate (Bundle savedInstanceState) {
@@ -29,6 +29,7 @@ public class MenuBurgerActivity extends AppCompatActivity {
         btBurger = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingActionButton);
         btFavorite = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingFavoriteBt);
         btPlaces = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingListPlaces);
+        btCommunity = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingCommunity);
 
         btBurger.setOnClickListener(new View.OnClickListener() {
 
@@ -41,12 +42,14 @@ public class MenuBurgerActivity extends AppCompatActivity {
                     TransitionManager.beginDelayedTransition(transitionContainer);
                     btFavorite.setVisibility(View.VISIBLE);
                     btPlaces.setVisibility(View.VISIBLE);
+                    btCommunity.setVisibility(View.VISIBLE);
                     i++;
                 } else if (i == 1) {
 
                     TransitionManager.beginDelayedTransition(transitionContainer);
                     btFavorite.setVisibility(View.GONE);
                     btPlaces.setVisibility(View.GONE);
+                    btCommunity.setVisibility(View.GONE);
                     i = 0;
                 }
             }

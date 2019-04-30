@@ -32,7 +32,7 @@ import java.io.InputStream;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1550;
-    FloatingActionButton btFavorite, btBurger, btPlaces, btSignOut;
+    FloatingActionButton btFavorite, btBurger, btPlaces, btSignOut, btCommunity;
     CoordinatorLayout transitionContainer;
     private GoogleMap mMap;
 
@@ -125,6 +125,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         btFavorite = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingFavoriteBt);
         btPlaces = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingListPlaces);
         btSignOut = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingSignOut);
+        btCommunity = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingCommunity);
 
         btBurger.setOnClickListener(new View.OnClickListener() {
 
@@ -139,6 +140,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     btFavorite.setVisibility(View.VISIBLE);
                     btPlaces.setVisibility(View.VISIBLE);
                     btSignOut.setVisibility(View.VISIBLE);
+                    btCommunity.setVisibility(View.VISIBLE);
                     i++;
                 } else if (i == 1) {
 
@@ -146,6 +148,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     btFavorite.setVisibility(View.GONE);
                     btPlaces.setVisibility(View.GONE);
                     btSignOut.setVisibility(View.GONE);
+                    btCommunity.setVisibility(View.GONE);
                     i = 0;
                 }
             }
@@ -164,7 +167,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onClick(View v) {
                 Intent gotoMain = new Intent(MapsActivity.this, ListMuseum.class);
                 startActivity(gotoMain);
-
             }
         });
 
@@ -174,6 +176,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 FirebaseAuth.getInstance().signOut();
                 finish();
                 startActivity(new Intent(MapsActivity.this, SignIn.class));
+            }
+        });
+
+        btCommunity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent gotoCommunity = new Intent(MapsActivity.this, Community.class);
+                startActivity(gotoCommunity);
             }
         });
     }
