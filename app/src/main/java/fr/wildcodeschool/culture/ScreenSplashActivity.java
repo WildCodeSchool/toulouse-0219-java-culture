@@ -1,8 +1,8 @@
 package fr.wildcodeschool.culture;
 
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import gr.net.maroulis.library.EasySplashScreen;
@@ -14,18 +14,15 @@ public class ScreenSplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen_splash);
 
-
-
-
         EasySplashScreen config = new EasySplashScreen(ScreenSplashActivity.this)
                 .withFullScreen()
-                .withTargetActivity(SignIn.class)
+                .withTargetActivity(MapsActivity.class)
                 .withSplashTimeOut(5000)
                 .withBackgroundColor(Color.parseColor("#1a1b29"))
                 .withHeaderText("")
                 .withFooterText("")
                 .withAfterLogoText("")
-                .withBeforeLogoText("~ Welcome ~")
+                .withBeforeLogoText("")
                 .withLogo(R.drawable.splashscreen);
 
         config.getHeaderTextView().setTextColor(Color.WHITE);

@@ -8,8 +8,8 @@
 
     <ListView
         android:id="@+id/favorites_listView"
-        android:layout_height="fill_parent"
         android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -19,4 +19,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/activity_list_view_elements" />
+
+    <include
+        android:id="@+id/menuLayout"
+        layout="@layout/menu" />
+
+    <Button
+        android:id="@+id/btBackInFavorite"
+        android:layout_width="159dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="161dp"
+        android:layout_marginLeft="161dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginRight="162dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:text="@string/back_tp_map"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

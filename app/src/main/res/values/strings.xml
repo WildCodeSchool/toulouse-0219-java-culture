@@ -20,6 +20,7 @@
     <string name="your_password">Your Password</string>
     <string name="sign_in">SIGN IN</string>
     <string name="AddFavorites">Add to favorites with success !</string>
+    <string name="back_tp_map">Back to Map</string>
     <string name="shoot">shoot</string>
     <string name="gallery">Gallery</string>
     <string name="todo">todoing</string>
@@ -29,6 +30,4 @@
     <string name="backdrop_title">LOVE MUSIC</string>
     <string name="backdrop_subtitle">This season top 20 albums</string>
     <string name="hello_card">Hello Card</string>
-
-
 </resources>

@@ -23,10 +23,16 @@
         android:roundIcon="@mipmap/museum_in_my_city_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ListEventsActivity"></activity>
-        <activity android:name=".FavoritesActivity"></activity>
-        <activity android:name=".ScreenSplashActivity"></activity>
+        <activity android:name=".Profile"></activity>
+        <activity android:name=".ListEventsActivity" />
+        <activity android:name=".FavoritesActivity" />
+        <activity android:name=".ScreenSplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".RegisterActivity"
             android:windowSoftInputMode="adjustPan" />
@@ -34,7 +40,7 @@
             android:name=".SignIn"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".MenuBurgerActivity" />
-        <activity android:name=".Events" />
+        <activity android:name=".EventsActivity"></activity>
         <activity android:name=".ListViewElements" />
         <activity android:name=".ListMuseum" />
         <activity android:name=".Community" />
@@ -52,13 +58,7 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/culture">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:label="@string/culture"></activity>
         <activity android:name=".MainActivity" />
         <provider
             android:name="android.support.v4.content.FileProvider"

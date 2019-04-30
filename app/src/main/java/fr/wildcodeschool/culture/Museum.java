@@ -1,33 +1,44 @@
 package fr.wildcodeschool.culture;
+
 import android.content.Context;
+import android.location.Location;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
+
 public class Museum {
 
-    private static ArrayList<Museum> museums = new ArrayList<>();
     String name;
     String numero;
     String horaires;
     String site;
     String metro;
+    double latitude;
+    double longitude;
+    float distance;
 
-    public Museum(String name, String numero, String horaires, String site, String metro) {
+    public Museum(String name, String numero, String horaires, String site, String metro, double longitude, double latitude, float distance) {
         this.name = name;
         this.numero = numero;
         this.horaires = horaires;
         this.site = site;
         this.metro = metro;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.distance = distance;
     }
 
     public Museum() {
     }
 
-    public static void extractJson(Context context, Boolean dropoff, int zoom, final MuseumListener listener) {
+    public static void extractJson(Context context, final Location locationUser, Boolean dropoff, int zoom, final MuseumListener listener) {
+        ArrayList<Museum> museums = new ArrayList<>();
         String json = null;
 
         try {
@@ -43,33 +54,42 @@ public class Museum {
         try {
             JSONArray root = new JSONArray(json);
             for (int i = 0; i < root.length(); i++) {
+                Location museumLocation = new Location("");
                 JSONObject rooter = (JSONObject) root.get(i);
                 JSONObject fields = rooter.getJSONObject("fields");
                 String name = (String) fields.get("eq_nom_equipement");
                 String numero = "";
-                if(fields.has("eq_telephone")) {
+                JSONArray geolocalisation = (JSONArray) fields.get("geo_point_2d");
+                Double latitude = (Double) geolocalisation.get(0);
+                Double longitude = (Double) geolocalisation.get(1);
+                museumLocation.setLatitude(latitude);
+                museumLocation.setLongitude(longitude);
+                float distance = museumLocation.distanceTo(locationUser);
+
+                if (fields.has("eq_telephone")) {
                     numero = (String) fields.get("eq_telephone");
                 }
 
                 String metro = "";
-                if(fields.has("eq_acces_metro")) {
+                if (fields.has("eq_acces_metro")) {
                     metro = (String) fields.get("eq_acces_metro");
                 }
 
-                String horaires ="";
-                if(fields.has("eq_horaires")) {
+                String horaires = "";
+                if (fields.has("eq_horaires")) {
                     horaires = (String) fields.get("eq_horaires");
                 }
 
                 String site = "";
-                if(fields.has("eq_site_web")) {
+                if (fields.has("eq_site_web")) {
                     site = (String) fields.get("eq_site_web");
                 }
-                Museum museum = new Museum(name,numero,horaires,site,metro);
+                Museum museum = new Museum(name, numero, horaires, site, metro, longitude, latitude, distance);
                 museums.add(museum);
+
             }
 
-        } catch(JSONException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
         listener.onResult(museums);
@@ -115,8 +135,33 @@ public class Museum {
         this.metro = metro;
     }
 
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public float getDistance() {
+        return this.distance;
+    }
+
+    public void setDistance(float distance) {
+        this.distance = distance;
+    }
+
     public interface MuseumListener {
         void onResult(ArrayList<Museum> museums);
-    }
-}
 
+    }
+
+}
