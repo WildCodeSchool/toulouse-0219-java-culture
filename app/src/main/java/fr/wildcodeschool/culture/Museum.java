@@ -64,7 +64,7 @@ public class Museum {
                 Double longitude = (Double) geolocalisation.get(1);
                 museumLocation.setLatitude(latitude);
                 museumLocation.setLongitude(longitude);
-                float distance = museumLocation.distanceTo(locationUser);
+                float distance = Math.round(museumLocation.distanceTo(locationUser));
 
                 if (fields.has("eq_telephone")) {
                     numero = (String) fields.get("eq_telephone");
