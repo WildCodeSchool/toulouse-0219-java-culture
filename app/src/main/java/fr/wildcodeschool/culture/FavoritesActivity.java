@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FavoritesActivity extends AppCompatActivity {
-    FloatingActionButton btFavorite, btBurger, btPlaces, btProfile, btSignOut;
+    FloatingActionButton btFavorite, btBurger, btPlaces, btProfile, btEvents, btSignOut;
     Button btBack;
     CoordinatorLayout transitionContainer;
 
@@ -62,6 +62,7 @@ public class FavoritesActivity extends AppCompatActivity {
         btFavorite = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingFavoriteBt);
         btPlaces = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingListPlaces);
         btProfile = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingProfile);
+        btEvents = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingListEvents);
         btSignOut = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingSignOut);
         btBack = findViewById(R.id.btBackInFavorite);
 
@@ -103,6 +104,13 @@ public class FavoritesActivity extends AppCompatActivity {
                 startActivity(goToFavorites);
             }
         });
+        btEvents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent gotoListMuseum = new Intent(FavoritesActivity.this, EventsActivity.class);
+                startActivity(gotoListMuseum);
+            }
+        });
 
         btPlaces.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,6 +119,7 @@ public class FavoritesActivity extends AppCompatActivity {
                 startActivity(gotoListMuseum);
             }
         });
+
 
         btSignOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,23 +143,17 @@ public class FavoritesActivity extends AppCompatActivity {
                         TransitionManager.beginDelayedTransition(transitionContainer);
                         btFavorite.setVisibility(View.VISIBLE);
                         btPlaces.setVisibility(View.VISIBLE);
-                        btProfile.setVisibility(View.VISIBLE);
+                        btEvents.setVisibility(View.VISIBLE);
                         btSignOut.setVisibility(View.VISIBLE);
                         i++;
                     } else if (i == 1) {
                         TransitionManager.beginDelayedTransition(transitionContainer);
                         btFavorite.setVisibility(View.GONE);
                         btPlaces.setVisibility(View.GONE);
-                        btProfile.setVisibility(View.GONE);
+                        btEvents.setVisibility(View.GONE);
                         btSignOut.setVisibility(View.GONE);
                         i = 0;
                     }
-                }
-            });
-            btProfile.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(FavoritesActivity.this, Profile.class));
                 }
             });
 

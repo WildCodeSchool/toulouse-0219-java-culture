@@ -1,5 +1,6 @@
 package fr.wildcodeschool.culture;
 
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
@@ -17,7 +18,10 @@ public class EventsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
 
-        extractAPI(EventsActivity.this, dropOff, zoom, new Event.EventListener() {
+        Singleton singleton = Singleton.getInstance();
+        Location coord = singleton.getLocationUser();
+
+        extractAPI(EventsActivity.this,coord, dropOff, zoom, new Event.EventListener() {
             @Override
             public void onResult(ArrayList<Event> events) {
                 ListView listMenu = findViewById(R.id.lvEvents);
@@ -25,6 +29,5 @@ public class EventsActivity extends AppCompatActivity {
                 listMenu.setAdapter(adapter);
             }
         });
-
     }
 }
