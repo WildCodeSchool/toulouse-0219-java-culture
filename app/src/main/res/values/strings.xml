@@ -25,4 +25,16 @@
     <string name="liste_des_evenements">Liste des évènements</string>
     <string name="favoris">Favoris</string>
     <string name="meters">m</string>
+    <string name="connexion">Connexion</string>
+    <string name="se_connecter_avec_google">Se connecter avec Google</string>
+    <string name="cr_er_un_nouveau_compte">Créer un nouveau compte?</string>
+    <string name="revenir_la_carte">Revenir à la carte</string>
+    <string name="mot_de_passe">Mot de passe</string>
+    <string name="confirmer_le_mot_de_passe">Confirmer le mot de passe</string>
+    <string name="pr_nom">Prénom</string>
+    <string name="nom">Nom</string>
+    <string name="inscrire">Créer un nouveau compte</string>
+    <string name="avez_vous_d_ja_un_compte">Avez vous déja un compte?</string>
+    <string name="votre_e_mail">Votre e-mail</string>
+    <string name="votre_mot_de_passe">Votre mot de passe</string>
 </resources>
