@@ -24,7 +24,6 @@ public class ListMuseumAdapter extends ArrayAdapter<Museum> {
                 return Float.compare(museum1.getDistance(), museum2.getDistance());
             }
         });
-
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -34,7 +33,6 @@ public class ListMuseumAdapter extends ArrayAdapter<Museum> {
             convertView = LayoutInflater.from(getContext())
                     .inflate(R.layout.activity_list_view_elements, parent, false);
         }
-
         TextView name = convertView.findViewById(R.id.tvAdresse);
         TextView numero = convertView.findViewById(R.id.tvDescriptif);
         TextView horaires = convertView.findViewById(R.id.tvHoraires);

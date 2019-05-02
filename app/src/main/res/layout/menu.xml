@@ -78,12 +78,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
-        android:layout_marginRight="26dp"
-        android:layout_marginBottom="500dp"
+        android:layout_marginRight="36dp"
+        android:layout_marginBottom="420dp"
+        android:alpha="0.70"
         android:backgroundTint="@color/colorPrimary"
         android:clickable="true"
         android:visibility="gone"
-        app:fabSize="normal"
-        app:srcCompat="@drawable/ic_sign_out" />
+        app:fabSize="mini"
+        app:srcCompat="@drawable/ic_person_black_24dp" />
 
 </android.support.design.widget.CoordinatorLayout>
