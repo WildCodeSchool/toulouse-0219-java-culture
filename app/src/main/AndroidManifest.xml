@@ -8,6 +8,11 @@
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="18" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
 
     <uses-feature android:name="android.hardware.location.gps" />
 
@@ -38,6 +43,7 @@
         <activity android:name=".EventsActivity"></activity>
         <activity android:name=".ListViewElements" />
         <activity android:name=".ListMuseum" />
+        <activity android:name=".Community" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -57,6 +63,15 @@
             android:name=".MapsActivity"
             android:label="@string/culture"></activity>
         <activity android:name=".MainActivity" />
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="fr.wildcodeschool.culture.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" ></meta-data>
+        </provider>
     </application>
 
 </manifest>

@@ -87,4 +87,18 @@
         app:fabSize="mini"
         app:srcCompat="@drawable/ic_sign_out" />
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingCommunity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginRight="36dp"
+        android:layout_marginBottom="370dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:clickable="true"
+        android:visibility="gone"
+        app:fabSize="mini"
+        android:alpha="0.70"
+        app:srcCompat="@android:drawable/ic_menu_camera" />
+
 </android.support.design.widget.CoordinatorLayout>

@@ -47,7 +47,7 @@ import java.util.ArrayList;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
     private static final int REQUEST_LOCATION = 4322;
-    FloatingActionButton btFavorite, btBurger, btPlaces, btProfile, btEvents, btSignOut;
+    FloatingActionButton btFavorite, btBurger, btPlaces, btProfile, btEvents, btSignOut, btCommunity;
     CoordinatorLayout transitionContainer;
     private boolean mMapInit = false;
     private GoogleMap mMap;
@@ -240,6 +240,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         btProfile = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingProfile);
         btEvents = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingListEvents);
         btSignOut = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingSignOut);
+        btCommunity = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingCommunity);
+
 
         btBurger.setOnClickListener(new View.OnClickListener() {
 
@@ -299,6 +301,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 startActivity(new Intent(MapsActivity.this, SignIn.class));
             }
         });
+        btCommunity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent gotoCommunity = new Intent(MapsActivity.this, Community.class);
+                startActivity(gotoCommunity);
+
+            }
+        });
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
@@ -315,6 +325,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         btPlaces.setVisibility(View.VISIBLE);
                         btEvents.setVisibility(View.VISIBLE);
                         btSignOut.setVisibility(View.VISIBLE);
+                        btCommunity.setVisibility(View.VISIBLE);
                         i++;
                     } else if (i == 1) {
                         TransitionManager.beginDelayedTransition(transitionContainer);
@@ -322,6 +333,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         btPlaces.setVisibility(View.GONE);
                         btEvents.setVisibility(View.GONE);
                         btSignOut.setVisibility(View.GONE);
+                        btCommunity.setVisibility(View.GONE);
                         i = 0;
                     }
                 }

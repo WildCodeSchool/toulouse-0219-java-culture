@@ -4,5 +4,7 @@
     <color name="colorPrimaryDark">#552A0A</color>
     <color name="colorAccent">#F61A31</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="viewBg">#f1f5f8</color>
+    <color name="album_title">#4c4c4c</color>
     <color name="colorRed">#D11415</color>
 </resources>
