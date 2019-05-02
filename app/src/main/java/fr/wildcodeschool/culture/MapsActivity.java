@@ -105,7 +105,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mLocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         LocationListener locationListener = new LocationListener() {
 
-
             @Override
             public void onLocationChanged(Location location) {
                 setUserLocation(location);
@@ -125,7 +124,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         };
         mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
         mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 2, locationListener);
-
 
     }
 
@@ -149,7 +147,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         }
     }
-
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -232,7 +229,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void floatingMenu() {
-
         transitionContainer = (CoordinatorLayout) findViewById(R.id.menuLayout);
         btBurger = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingActionButton);
         btFavorite = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingFavoriteBt);
@@ -241,7 +237,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         btEvents = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingListEvents);
         btSignOut = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingSignOut);
         btCommunity = (FloatingActionButton) transitionContainer.findViewById(R.id.floatingCommunity);
-
 
         btBurger.setOnClickListener(new View.OnClickListener() {
 

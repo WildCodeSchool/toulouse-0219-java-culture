@@ -52,7 +52,6 @@
         android:layout_marginRight="177dp"
         android:layout_marginBottom="21dp"
         android:lineSpacingExtra="12sp"
-        android:text="@string/favoris"
         android:textColor="@color/colorRed"
         android:textSize="30sp"
         app:fontFamily="@font/cabin_sketch_bold"

@@ -15,7 +15,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -25,7 +24,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.transitionseverywhere.TransitionManager;
-
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -49,7 +47,6 @@ public class Community extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.community);
-
         floatingMenu();
         mAuth = FirebaseAuth.getInstance();
         mStorageRef = FirebaseStorage.getInstance().getReference();
@@ -73,7 +70,6 @@ public class Community extends AppCompatActivity {
                 dispatchTakePictureIntent();
             }
         });
-
     }
 
     private File createImageFile() throws IOException {
@@ -114,9 +110,7 @@ public class Community extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        super.onActivityResult(requestCode, resultCode, data);
-
-
+        super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK) {
             if (requestCode == REQUEST_GET_SINGLE_FILE) {
                 mDownloadUri = data.getData();
@@ -129,7 +123,6 @@ public class Community extends AppCompatActivity {
                 Glide.with(Community.this).load(mDownloadUri).into(ivRecupPic);
 
                 //firebase
-
                 final StorageReference riversRef = mStorageRef.child("images/" + mDownloadUri.getPath());
 
                 riversRef.putFile(mDownloadUri)
@@ -144,7 +137,6 @@ public class Community extends AppCompatActivity {
                                         ImageView iv = findViewById(R.id.ivFireBase);
                                         Glide.with(Community.this).load(downloadUrl).into(iv);
                                         //Do what you want with the url
-
                                     }
 
                                 });
@@ -157,7 +149,6 @@ public class Community extends AppCompatActivity {
                                 // ...
                             }
                         });
-
             }
         }
     }
