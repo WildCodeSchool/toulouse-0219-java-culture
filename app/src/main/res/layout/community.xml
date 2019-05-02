@@ -19,8 +19,8 @@
         android:alpha="0.70"
         android:background="@drawable/rounded_button"
         android:backgroundTint="@color/colorPrimary"
-        android:text="@string/shoot"
         android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        android:text="@string/prendre_une_photo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.592"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,8 +38,8 @@
         android:alpha="0.70"
         android:background="@drawable/rounded_button"
         android:backgroundTint="@color/colorPrimary"
-        android:text="@string/gallery"
         android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        android:text="@string/galerie"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.263"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,6 +76,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivRecupPic" />
+
 
     <TextView
         android:id="@+id/tvTitle"
@@ -181,5 +182,29 @@
         app:layout_constraintStart_toEndOf="@+id/ivExampleMuse5"
         app:layout_constraintTop_toBottomOf="@+id/ivExampleMuse3"
         app:srcCompat="@drawable/muse6" />
+
+    <Button
+        android:id="@+id/btBack"
+        android:layout_width="159dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="161dp"
+        android:layout_marginLeft="161dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginRight="162dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:text="@string/revenir_la_carte"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <include
+        android:id="@+id/menuLayout"
+        layout="@layout/menu"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="16dp" />
+
 
 </android.support.constraint.ConstraintLayout>
