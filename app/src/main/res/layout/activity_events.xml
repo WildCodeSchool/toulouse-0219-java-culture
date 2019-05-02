@@ -60,7 +60,7 @@
         android:layout_marginBottom="32dp"
         android:background="@drawable/rounded_button"
         android:backgroundTint="@color/colorPrimaryDark"
-        android:text="@string/retour_la_carte_"
+        android:text="@string/revenir_la_carte_"
         android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
