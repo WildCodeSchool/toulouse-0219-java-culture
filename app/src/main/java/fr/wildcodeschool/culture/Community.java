@@ -14,7 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
+
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -24,6 +24,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.transitionseverywhere.TransitionManager;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -110,7 +111,7 @@ public class Community extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        super.onActivityResult(requestCode, resultCode, data)
+        super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             if (requestCode == REQUEST_GET_SINGLE_FILE) {
                 mDownloadUri = data.getData();
@@ -133,7 +134,6 @@ public class Community extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(Uri uri) {
                                         Uri downloadUrl = uri;
-                                        Toast.makeText(Community.this, downloadUrl.toString(), Toast.LENGTH_SHORT).show();
                                         ImageView iv = findViewById(R.id.ivFireBase);
                                         Glide.with(Community.this).load(downloadUrl).into(iv);
                                         //Do what you want with the url

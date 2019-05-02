@@ -48,4 +48,6 @@
     <string name="votre_mot_de_passe">Votre mot de passe</string>
     <string name="prendre_une_photo">Prendre une photo</string>
     <string name="galerie">Galerie</string>
+    <string name="communaut">Communauté</string>
+    <string name="albums">Albums</string>
 </resources>
