@@ -34,4 +34,5 @@
     <string name="liste_des_evenements">Liste des évènements</string>
     <string name="favoris">Favoris</string>
     <string name="meters">m</string>
+    <string name="revenir_la_carte_">Revenir à la carte</string>
 </resources>
